@@ -6,7 +6,6 @@ import { Checkbox } from "../../components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../../components/ui/dialog";
 import { Label } from "../../components/ui/label";
 
-// Feature card data for "Why Lumi?" section
 const whyLumiFeatures = [
   {
     title: "Your Thoughts Deserve Clarity",
@@ -25,23 +24,24 @@ const whyLumiFeatures = [
   },
 ];
 
-// Feature card data for "Try Lumi free!" section
 const tryLumiFeatures = [
   {
     title: "Speak Or Type",
     description: "Easily input your thoughts.",
+    icon: "https://assets.lumime.ai/icon_audio_Text.png"
   },
   {
     title: "Automatic Organization",
     description: "Lumi categorizes your thoughts into meaningful themes.",
+    icon: "https://assets.lumime.ai/icon_bell.png"
   },
   {
     title: "Smart Recall",
     description: "Access insights exactly when you need them.",
+    icon: "https://assets.lumime.ai/icon_search.png"
   },
 ];
 
-// Trust card data
 const trustCards = [
   {
     title: "Your Safe Space, Anytime, Anywhere",
@@ -62,7 +62,6 @@ const trustCards = [
   },
 ];
 
-// Social media links data
 const socialLinks = [
   { icon: "/facebook.svg", alt: "Facebook" },
   { icon: "/twitter.svg", alt: "Twitter" },
@@ -92,7 +91,7 @@ const TypewriterText = ({ text, onComplete, delay = 0 }: { text: string; onCompl
       const timeout = setTimeout(() => {
         setDisplayText(prev => prev + text[currentIndex]);
         setCurrentIndex(prev => prev + 1);
-      }, 50); // Faster typing speed
+      }, 50);
 
       return () => clearTimeout(timeout);
     } else if (onComplete) {
@@ -129,7 +128,7 @@ const SequentialTypewriter = () => {
               <TypewriterText 
                 text={line} 
                 onComplete={handleLineComplete}
-                delay={index * 1000} // Delay start of each line
+                delay={index * 500}
               />
               <br />
             </>
@@ -145,19 +144,19 @@ export const Frame = (): JSX.Element => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const tryLumiCardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const trustCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const scrollVideoRef = useRef<HTMLVideoElement>(null);
+  const [hasPlayedOnce, setHasPlayedOnce] = useState(false);
   
-  // Form state
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: ''
   });
 
-  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Save to localStorage
     const waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
     waitlist.push({
       ...formData,
@@ -165,10 +164,8 @@ export const Frame = (): JSX.Element => {
     });
     localStorage.setItem('waitlist', JSON.stringify(waitlist));
     
-    // Reset form
     setFormData({ name: '', email: '', phone: '' });
     
-    // Close dialog
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
   };
 
@@ -177,7 +174,16 @@ export const Frame = (): JSX.Element => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
+            if (entry.target === scrollVideoRef.current && !hasPlayedOnce) {
+              const video = entry.target as HTMLVideoElement;
+              video.play();
+              setHasPlayedOnce(true);
+            } else if (entry.target.classList.contains('video-scroll')) {
+              const video = entry.target as HTMLVideoElement;
+              video.play();
+            } else {
+              entry.target.classList.add('animate-fade-in-up');
+            }
             observer.unobserve(entry.target);
           }
         });
@@ -206,10 +212,17 @@ export const Frame = (): JSX.Element => {
       }
     });
 
-    return () => observer.disconnect();
-  }, []);
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
 
-  // Waitlist form dialog component
+    if (scrollVideoRef.current) {
+      observer.observe(scrollVideoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasPlayedOnce]);
+
   const WaitlistForm = () => (
     <DialogContent>
       <DialogHeader>
@@ -251,8 +264,7 @@ export const Frame = (): JSX.Element => {
   );
 
   return (
-    <div className="flex flex-col items-start relative bg-[#0055ff]">
-      {/* Header/Navigation */}
+    <div className="flex flex-col items-start relative bg-[#055FFD]">
       <header className="flex h-[60px] items-center justify-between px-9 py-[9px] fixed top-0 left-0 right-0 w-full bg-white z-50">
         <img
           className="relative w-[100px] h-[17px]"
@@ -262,7 +274,7 @@ export const Frame = (): JSX.Element => {
 
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="h-9 px-4 py-2.5 bg-[#0055ff] rounded-lg">
+            <Button className="h-9 px-4 py-2.5 bg-[#055FFD] rounded-lg">
               <span className="[font-family:'Raleway',Helvetica] font-semibold text-white text-base tracking-[-0.32px]">
                 Join Waitlist
               </span>
@@ -272,11 +284,9 @@ export const Frame = (): JSX.Element => {
         </Dialog>
       </header>
 
-      {/* Add padding to account for fixed header */}
       <div className="h-[60px] w-full"></div>
 
-      {/* Hero Section */}
-      <section className="flex items-center gap-12 pt-[72px] pb-[118px] px-[200px] relative self-stretch w-full flex-[0_0_auto] bg-[#004be2]">
+      <section className="flex items-center gap-12 pt-[72px] pb-[118px] px-[200px] relative self-stretch w-full flex-[0_0_auto] bg-[#2256DE]">
         <div className="inline-flex flex-col items-start gap-4 relative flex-[0_0_auto]">
           <h1 className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-7xl tracking-[-1.44px] leading-[80px]">
             <SequentialTypewriter />
@@ -292,7 +302,7 @@ export const Frame = (): JSX.Element => {
               <Dialog>
                 <DialogTrigger asChild>
                   <Button className="w-[230px] h-14 px-9 py-2.5 bg-white rounded-[99px]">
-                    <span className="text-[#0055ff] [font-family:'Inter',Helvetica] font-medium text-xl tracking-[-0.40px]">
+                    <span className="text-[#055FFD] [font-family:'Inter',Helvetica] font-medium text-xl tracking-[-0.40px]">
                       Join Waitlist
                     </span>
                   </Button>
@@ -304,31 +314,19 @@ export const Frame = (): JSX.Element => {
         </div>
 
         <div className="relative w-[488px] h-[324.72px] mr-[-37.00px]">
-          <div className="absolute w-[455px] h-[204px] top-0 left-0">
-            <div className="relative h-[202px] bg-[url(/union-1.svg)] bg-[100%_100%]">
-              <img
-                className="absolute w-[425px] h-[129px] top-[15px] left-[15px]"
-                alt="Vector"
-                src="/vector.svg"
-              />
-            </div>
-          </div>
-
-          <div className="absolute w-[243px] h-[101px] top-56 left-[245px] bg-[url(/union.svg)] bg-[100%_100%]">
-            <div className="relative h-[87px]">
-              <div className="absolute w-[243px] h-20 top-0 left-0 rounded-[749.25px] bg-[url(/objects.svg)] bg-[100%_100%]" />
-
-              <img
-                className="absolute w-[9px] h-[87px] top-0 left-44"
-                alt="Vector"
-                src="/vector-1.svg"
-              />
-            </div>
-          </div>
+          <video 
+            className="absolute w-[1092px] h-[489.6px] top-[-40px] left-0 object-cover rounded-lg"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+          >
+            <source src="https://assets.lumime.ai/s1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
 
-      {/* Feeling Overwhelmed Section */}
       <section className="flex flex-col items-start px-0 py-[72px] relative self-stretch w-full flex-[0_0_auto]">
         <div className="flex flex-col items-start gap-[11px] px-[200px] py-0 relative self-stretch w-full flex-[0_0_auto]">
           <h2 className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-5xl tracking-[0.96px] leading-[64px] opacity-0 animate-fade-up">
@@ -338,16 +336,21 @@ export const Frame = (): JSX.Element => {
         </div>
 
         <div className="flex flex-col items-center gap-2.5 px-[200px] py-0 relative self-stretch w-full flex-[0_0_auto]">
-          <img
-            className="relative self-stretch w-full h-[457.89px] object-cover"
-            alt="Group"
-            src="/group-39922-1.png"
-          />
+          <div className="relative w-full pt-[56.25%]">
+            <video 
+              ref={videoRef}
+              className="absolute top-0 left-0 w-full h-full object-cover video-scroll"
+              muted 
+              playsInline
+            >
+              <source src="https://assets.lumime.ai/s2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
       </section>
 
-      {/* You're Not Alone Section */}
-      <section className="flex flex-col items-start gap-8 px-0 py-[72px] relative self-stretch w-full flex-[0_0_auto]">
+      <section className="flex flex-col items-start gap-8 px-0 py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-[#2256DE]">
         <div className="flex flex-col items-start gap-[11px] px-[200px] py-0 relative self-stretch w-full flex-[0_0_auto]">
           <h2 className="relative self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-5xl tracking-[0.96px] leading-[64px]">
             You&#39;re not alone
@@ -357,32 +360,34 @@ export const Frame = (): JSX.Element => {
         </div>
 
         <div className="flex flex-col h-[673px] items-center justify-center gap-2.5 relative self-stretch w-full">
-          <img
+          <video 
+            ref={scrollVideoRef}
             className="relative min-w-60 max-w-[740px] w-full max-h-[672.96px] h-[672.96px] object-cover"
-            alt="Group"
-            src="/group-36697-1.png"
-          />
+            muted 
+            playsInline
+          >
+            <source src="https://assets.lumime.ai/s3.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
 
-      {/* Why Lumi Section */}
-      <section className="flex flex-col h-[1312px] items-start gap-[60px] px-0 py-[72px] relative self-stretch w-full bg-white">
+      <section className="flex flex-col h-[812px] items-start gap-[60px] px-0 py-[72px] relative self-stretch w-full bg-white">
         <div className="flex flex-col w-full items-start gap-3 px-[200px] py-0 relative flex-[0_0_auto]">
-          <h2 className="relative self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-[#0055ff] text-5xl tracking-[0.96px] leading-[64px]">
+          <h2 className="relative self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-[#055FFD] text-5xl tracking-[0.96px] leading-[64px]">
             Why Lumi？ <br />
             Because your thoughts matter.
           </h2>
         </div>
 
-        <div className="flex flex-col w-full h-[922px] items-center gap-2.5 px-[200px] py-0 relative">
-          <div className="relative w-[1040px] h-[922px]">
-            {/* First row of feature cards */}
+        <div className="flex flex-col w-full h-[622px] items-center gap-2.5 px-[200px] py-0 relative">
+          <div className="relative w-[1040px] h-[622px]">
             <div className="flex gap-9 w-full">
               {whyLumiFeatures.slice(0, 2).map((feature, index) => (
                 <Card
                   key={index}
                   ref={el => cardRefs.current[index] = el}
-                  className={`w-[501px] h-[443px] p-8 ${index === 0 ? "absolute top-0 left-0" : "absolute top-0 left-[539px]"} bg-[#f7f7f7] rounded-[20px] opacity-0`}
+                  className={`w-[501px] h-[266px] p-8 ${index === 0 ? "absolute top-0 left-0" : "absolute top-0 left-[539px]"} bg-[#f7f7f7] rounded-[20px] opacity-0`}
                 >
                   <CardContent className="flex flex-col items-start gap-5 p-0 h-full">
                     <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
@@ -400,19 +405,16 @@ export const Frame = (): JSX.Element => {
                     <p className="relative self-stretch font-medium text-[#00000099] text-xl [font-family:'Raleway',Helvetica] tracking-[0] leading-7">
                       {feature.description}
                     </p>
-
-                    <div className="relative flex-1 self-stretch w-full grow bg-white rounded-lg" />
                   </CardContent>
                 </Card>
               ))}
             </div>
 
-            {/* Bottom feature card */}
             <Card 
               ref={el => cardRefs.current[2] = el}
-              className="w-[1040px] p-8 absolute top-[479px] left-0 bg-[#f7f7f7] rounded-[20px] opacity-0"
+              className="w-[1040px] p-8 absolute top-[302px] left-0 bg-[#f7f7f7] rounded-[20px] opacity-0"
             >
-              <CardContent className="flex-col h-[379px] gap-5 p-0 flex items-start">
+              <CardContent className="flex-col h-[151px] gap-5 p-0 flex items-start">
                 <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
                   <h3 className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-black text-[28px] tracking-[0] leading-7 whitespace-nowrap">
                     {whyLumiFeatures[2].title}
@@ -428,16 +430,13 @@ export const Frame = (): JSX.Element => {
                 <p className="relative self-stretch font-medium text-[#00000099] text-xl [font-family:'Raleway',Helvetica] tracking-[0] leading-7">
                   {whyLumiFeatures[2].description}
                 </p>
-
-                <div className="relative flex-1 self-stretch w-full grow bg-white rounded-lg" />
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Try Lumi Free Section */}
-      <section className="flex flex-col items-center justify-center gap-9 px-0 py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-[#0055ff]">
+      <section className="flex flex-col items-center justify-center gap-9 px-0 py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-[#055FFD]">
         <h2 className="relative self-stretch h-16 mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-5xl text-center tracking-[0.96px] leading-[64px] whitespace-nowrap">
           Try Lumi free!
         </h2>
@@ -452,8 +451,8 @@ export const Frame = (): JSX.Element => {
               <CardContent className="flex flex-col items-start gap-6 p-0 flex-1 grow">
                 <img
                   className="relative w-14 h-14"
-                  alt="Frame"
-                  src="/frame.svg"
+                  alt={feature.title}
+                  src={feature.icon}
                 />
 
                 <div className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
@@ -471,117 +470,76 @@ export const Frame = (): JSX.Element => {
         </div>
       </section>
 
-      {/* Lumi Can Be Trusted Section */}
-      <section className="flex flex-col items-center gap-9 px-0 py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-white">
-        <h2 className="relative w-full mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-[#0055ff] text-5xl text-center tracking-[0.96px] leading-[64px]">
-          Lumi can be trusted
-        </h2>
+      <section className="flex flex-col items-start gap-8 px-[200px] py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-white">
+        <div className="flex flex-col items-start gap-[11px] relative self-stretch w-full flex-[0_0_auto]">
+          <h2 className="relative self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-[#055FFD] text-5xl tracking-[0.96px] leading-[64px]">
+            Trust & Security
+          </h2>
+        </div>
 
-        <div className="inline-flex items-center justify-center gap-[19px] relative flex-[0_0_auto]">
+        <div className="flex items-start gap-8 relative self-stretch w-full flex-[0_0_auto]">
           {trustCards.map((card, index) => (
             <Card
               key={index}
               ref={el => trustCardRefs.current[index] = el}
-              className={`flex flex-col w-[520px] h-[530px] items-start gap-20 p-9 relative ${card.bgColor} rounded-3xl ${card.borderClass} opacity-0`}
+              className={`flex-1 p-8 ${card.bgColor} ${card.borderClass} rounded-[20px] opacity-0`}
             >
-              <CardContent className="flex flex-col items-start gap-8 p-0 flex-1 self-stretch w-full grow">
-                <h3
-                  className={`relative w-[499px] mt-[-1.00px] mr-[-51.00px] [font-family:'Raleway',Helvetica] font-bold ${card.textColor} text-[32px] tracking-[0] leading-10`}
-                >
+              <CardContent className="flex flex-col items-start gap-4 p-0">
+                <h3 className={`relative self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold ${card.textColor} text-[28px] tracking-[0] leading-[normal]`}>
                   {card.title}
                 </h3>
-
-                <p
-                  className={`relative self-stretch [font-family:'Raleway',Helvetica] font-normal ${card.descriptionColor || card.textColor} text-base tracking-[0] leading-6`}
-                >
+                <p className={`relative self-stretch [font-family:'Raleway',Helvetica] font-medium ${card.descriptionColor || card.textColor} text-xl tracking-[0] leading-[normal]`}>
                   {card.description}
                 </p>
-
-                <div
-                  className={`relative flex-1 self-stretch w-full grow ${index === 0 ? "bg-white" : "bg-[#e9e9e9]"} rounded-lg`}
-                />
               </CardContent>
             </Card>
           ))}
         </div>
       </section>
 
-      {/* Call to Action Section */}
-      <section className="flex flex-col h-[403px] items-start gap-2.5 px-0 py-[72px] relative self-stretch w-full">
-        <div className="absolute w-full h-[403px] top-0 left-0">
-          <div className="relative h-[403px]">
-            <div className="absolute w-full h-[210px] top-[193px] left-0 bg-[#0055ff]" />
-            <div className="absolute w-full h-[195px] top-0 left-0 bg-white" />
+      <footer className="flex flex-col items-start gap-[72px] px-[200px] py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-[#055FFD]">
+        <div className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
+          <div className="flex flex-col items-start gap-8 relative flex-[0_0_auto]">
+            <img
+              className="relative w-[100px] h-[17px]"
+              alt="Lumi"
+              src="/lumi.svg"
+            />
+            <div className="flex items-start gap-6 relative flex-[0_0_auto]">
+              {socialLinks.map((link, index) => (
+                <img
+                  key={index}
+                  className="relative w-6 h-6"
+                  alt={link.alt}
+                  src={link.icon}
+                />
+              ))}
+            </div>
           </div>
+
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="w-[230px] h-14 px-9 py-2.5 bg-white rounded-[99px]">
+                <span className="text-[#055FFD] [font-family:'Inter',Helvetica] font-medium text-xl tracking-[-0.40px]">
+                  Join Waitlist
+                </span>
+              </Button>
+            </DialogTrigger>
+            <WaitlistForm />
+          </Dialog>
         </div>
 
-        <Card className="mx-auto w-[1280px] flex flex-wrap items-start justify-center gap-[100px_100px] px-[52px] py-14 relative bg-white rounded-3xl shadow-[0px_8px_24px_#0000001a]">
-          <CardContent className="p-0 flex flex-wrap items-start justify-center gap-[100px_100px] w-full">
-            <h2 className="w-[448.79px] leading-[46px] relative mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-[#000000cc] text-[32px] tracking-[0]">
-              Ready for a clearer mind?
-              <br />
-              Jion waitlist!
-            </h2>
-
-            <div className="relative w-[535px] h-[116px]">
-              <div className="absolute w-[373px] h-[26px] top-[90px] left-[78px] flex items-center gap-2">
-                <Checkbox
-                  checked={checked}
-                  onCheckedChange={setChecked}
-                  className="h-[26px] w-[26px] border-[#0055ff] data-[state=checked]:bg-[#0055ff]"
-                />
-
-                <p className="[font-family:'Raleway',Helvetica] font-bold text-[#00000099] text-lg tracking-[0] leading-[18px] whitespace-nowrap">
-                  Join the 10,000 users in our newsletter
-                </p>
-              </div>
-
-              <div className="absolute w-[289px] h-14 top-0 left-0 rounded-[99px]">
-                <div className="absolute w-[135px] h-[18px] top-[19px] left-0" />
-
-                <Input
-                  className="absolute w-[289px] h-14 top-0 left-0 bg-[#f0f0f0] rounded-[99px] px-[29px] py-[18px] [font-family:'Raleway',Helvetica] font-normal text-black text-lg tracking-[0] leading-[18px]"
-                  placeholder="enter your e-mail"
-                />
-              </div>
-
-              <div className="inline-flex flex-col items-start gap-4 absolute top-0 left-[305px]">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="bg-[#0055ff] w-[230px] h-14 px-9 py-2.5 rounded-[99px]">
-                      <span className="text-white [font-family:'Inter',Helvetica] font-medium text-xl tracking-[-0.40px]">
-                        Join Waitlist
-                      </span>
-                    </Button>
-                  </DialogTrigger>
-                  <WaitlistForm />
-                </Dialog>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-
-      {/* Footer */}
-      <footer className="flex flex-col items-start gap-3 px-[120px] py-8 relative self-stretch w-full flex-[0_0_auto] bg-black">
-        <div className="relative w-[1194px] h-9">
-          <p className="absolute top-[9px] left-0 font-text-single-200-regular font-[number:var(--text-single-200-regular-font-weight)] text-white text-[length:var(--text-single-200-regular-font-size)] text-center tracking-[var(--text-single-200-regular-letter-spacing)] leading-[var(--text-single-200-regular-line-height)] whitespace-nowrap [font-style:var(--text-single-200-regular-font-style)]">
-            Copyright © 2025 Lumi.me | All Rights Reserved
+        <div className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
+          <p className="relative flex-1 mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal]">
+            © 2024 Lumi. All rights reserved.
           </p>
-
-          <div className="inline-flex items-start gap-4 absolute top-0 left-[948px]">
-            {socialLinks.map((social, index) => (
-              <div
-                key={index}
-                className="relative w-9 h-9 bg-[#f2f1f9] rounded-lg"
-              >
-                <img
-                  className="absolute w-auto h-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                  alt={social.alt}
-                  src={social.icon}
-                />
-              </div>
-            ))}
+          <div className="flex items-start gap-8 relative flex-[0_0_auto]">
+            <div className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap">
+              Privacy Policy
+            </div>
+            <div className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap">
+              Terms of Service
+            </div>
           </div>
         </div>
       </footer>
