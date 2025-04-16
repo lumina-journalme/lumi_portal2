@@ -32,6 +32,8 @@ jobs:
           VITE_GITHUB_TOKEN: ${{ secrets.WAITLIST_TOKEN }}
           VITE_GITHUB_OWNER: lumina-journalme
           VITE_GITHUB_REPO: lumi-waitlist-data
+          VITE_DISPATCH_OWNER: lumina-journalme
+          VITE_DISPATCH_REPO: lumi_portal2
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

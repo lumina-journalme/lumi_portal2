@@ -137,7 +137,7 @@ export const Frame = (): JSX.Element => {
     
     try {
       const response = await fetch(
-        `https://api.github.com/repos/${import.meta.env.VITE_GITHUB_OWNER}/${import.meta.env.VITE_GITHUB_REPO}/dispatches`,
+        `https://api.github.com/repos/${import.meta.env.VITE_DISPATCH_OWNER}/${import.meta.env.VITE_DISPATCH_REPO}/dispatches`,
         {
           method: 'POST',
           headers: {
