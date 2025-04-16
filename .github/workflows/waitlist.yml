@@ -1,0 +1,19 @@
+name: Process Waitlist Submission
+
+on:
+  repository_dispatch:
+    types: [waitlist_submission]
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.WAITLIST_TOKEN }}
+          REPO: ${{ secrets.WAITLIST_REPO }}
+        run: |
+          gh issue create \
+            --title "New Waitlist Submission - $(date +%Y-%m-%d)" \
+            --body "$(echo '${{ github.event.client_payload.data }}' | jq -r '. | "Name: \(.name)\nEmail: \(.email)\nPhone: \(.phone)"')" \
+            --repo $REPO 
