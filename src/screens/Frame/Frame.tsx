@@ -63,74 +63,58 @@ const trustCards = [
   },
 ];
 
-const TypewriterText = ({ text, onComplete, delay = 0 }: { text: string; onComplete?: () => void; delay?: number }) => {
-  const [displayText, setDisplayText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(-1);
-  const [started, setStarted] = useState(false);
+// Define WaitlistForm outside the Frame component
+interface WaitlistFormProps {
+  formData: { name: string; email: string; phone: string };
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: React.FormEvent) => void;
+}
 
-  useEffect(() => {
-    const startTimeout = setTimeout(() => {
-      setStarted(true);
-      setCurrentIndex(0);
-    }, delay);
-
-    return () => clearTimeout(startTimeout);
-  }, [delay]);
-
-  useEffect(() => {
-    if (!started) return;
-
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayText(prev => prev + text[currentIndex]);
-        setCurrentIndex(prev => prev + 1);
-      }, 50);
-
-      return () => clearTimeout(timeout);
-    } else if (onComplete) {
-      onComplete();
-    }
-  }, [currentIndex, text, started, onComplete]);
-
-  return (
-    <span className="inline-block">
-      {displayText}
-      {currentIndex >= 0 && currentIndex < text.length && (
-        <span className="animate-blink">|</span>
-      )}
-    </span>
-  );
-};
-
-const SequentialTypewriter = () => {
-  const [currentLine, setCurrentLine] = useState(0);
-  const lines = ["Be Heard.", "Be Understood.", "Be Reminded."];
-
-  const handleLineComplete = () => {
-    if (currentLine < lines.length - 1) {
-      setCurrentLine(prev => prev + 1);
-    }
-  };
-
-  return (
-    <>
-      {lines.map((line, index) => (
-        <React.Fragment key={index}>
-          {index <= currentLine && (
-            <>
-              <TypewriterText 
-                text={line} 
-                onComplete={handleLineComplete}
-                delay={index * 500}
-              />
-              <br />
-            </>
-          )}
-        </React.Fragment>
-      ))}
-    </>
-  );
-};
+const WaitlistForm: React.FC<WaitlistFormProps> = ({ formData, handleInputChange, handleSubmit }) => (
+  <DialogContent className="sm:max-w-[425px]">
+    <DialogHeader>
+      <DialogTitle className="text-xl mb-4">Join Our Waitlist</DialogTitle>
+    </DialogHeader>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="space-y-2">
+        <Label htmlFor="name">Name *</Label>
+        <Input
+          id="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          required
+          autoComplete="name"
+          className="w-full"
+        />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="email">Email *</Label>
+        <Input
+          id="email"
+          type="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          required
+          autoComplete="email"
+          className="w-full"
+        />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="phone">Phone *</Label>
+        <Input
+          id="phone"
+          type="tel"
+          value={formData.phone}
+          onChange={handleInputChange}
+          required
+          autoComplete="tel"
+          className="w-full"
+        />
+      </div>
+      <Button type="submit" className="w-full">Submit</Button>
+    </form>
+  </DialogContent>
+);
 
 export const Frame = (): JSX.Element => {
   const [checked, setChecked] = React.useState(false);
@@ -213,49 +197,6 @@ export const Frame = (): JSX.Element => {
     return () => observer.disconnect();
   }, [hasPlayedOnce]);
 
-  const WaitlistForm = () => (
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle className="text-xl mb-4">Join Our Waitlist</DialogTitle>
-      </DialogHeader>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="name">Name *</Label>
-          <Input
-            id="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-            autoComplete="name"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="email">Email *</Label>
-          <Input
-            id="email"
-            type="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-            autoComplete="email"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="phone">Phone *</Label>
-          <Input
-            id="phone"
-            type="tel"
-            value={formData.phone}
-            onChange={handleInputChange}
-            required
-            autoComplete="tel"
-          />
-        </div>
-        <Button type="submit" className="w-full">Submit</Button>
-      </form>
-    </DialogContent>
-  );
-
   return (
     <div className="flex flex-col items-start relative bg-[#055FFD]">
       <header className="flex h-[60px] items-center justify-between px-9 py-[9px] fixed top-0 left-0 right-0 w-full bg-[#2256DE] z-50">
@@ -273,7 +214,11 @@ export const Frame = (): JSX.Element => {
               </span>
             </Button>
           </DialogTrigger>
-          <WaitlistForm />
+          <WaitlistForm 
+            formData={formData} 
+            handleInputChange={handleInputChange} 
+            handleSubmit={handleSubmit} 
+          />
         </Dialog>
       </header>
 
@@ -282,7 +227,7 @@ export const Frame = (): JSX.Element => {
       <section className="flex items-center gap-12 pt-[72px] pb-[118px] px-[200px] relative self-stretch w-full flex-[0_0_auto] bg-[#2256DE]">
         <div className="inline-flex flex-col items-start gap-4 relative flex-[0_0_auto]">
           <h1 className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-7xl tracking-[-1.44px] leading-[80px]">
-            <SequentialTypewriter />
+            Be Heard. Be Understood. Be Reminded.
           </h1>
 
           <div className="inline-flex flex-col items-start gap-12 relative flex-[0_0_auto]">
@@ -299,7 +244,11 @@ export const Frame = (): JSX.Element => {
                     </span>
                   </Button>
                 </DialogTrigger>
-                <WaitlistForm />
+                <WaitlistForm 
+                  formData={formData} 
+                  handleInputChange={handleInputChange} 
+                  handleSubmit={handleSubmit} 
+                />
               </Dialog>
             </div>
           </div>
@@ -505,7 +454,11 @@ export const Frame = (): JSX.Element => {
                 </span>
               </Button>
             </DialogTrigger>
-            <WaitlistForm />
+            <WaitlistForm 
+              formData={formData} 
+              handleInputChange={handleInputChange} 
+              handleSubmit={handleSubmit} 
+            />
           </Dialog>
         </div>
 
