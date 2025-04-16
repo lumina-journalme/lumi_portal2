@@ -132,18 +132,43 @@ export const Frame = (): JSX.Element => {
     phone: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
-    waitlist.push({
-      ...formData,
-      timestamp: new Date().toISOString()
-    });
-    localStorage.setItem('waitlist', JSON.stringify(waitlist));
-    
-    setFormData({ name: '', email: '', phone: '' });
-    setIsDialogOpen(false);
+    try {
+      const response = await fetch(
+        `https://api.github.com/repos/${import.meta.env.VITE_GITHUB_OWNER}/${import.meta.env.VITE_GITHUB_REPO}/dispatches`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+            'Accept': 'application/vnd.github.v3+json',
+          },
+          body: JSON.stringify({
+            event_type: 'waitlist_submission',
+            client_payload: {
+              data: formData
+            }
+          })
+        }
+      );
+
+      if (response.status === 204) {
+        setFormData({ name: '', email: '', phone: '' });
+        setIsDialogOpen(false);
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error('提交失败');
+      }
+
+      setFormData({ name: '', email: '', phone: '' });
+      setIsDialogOpen(false);
+    } catch (error) {
+      console.error('Error:', error);
+      // 处理错误
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
