@@ -103,9 +103,47 @@ module.exports = {
         "fade-in-up": "fade-in-up 0.8s ease-out forwards",
         "blink": "blink 1s step-end infinite",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: 'inherit',
+            a: {
+              color: '#3182ce',
+              '&:hover': {
+                color: '#2c5282',
+              },
+            },
+            strong: {
+              color: 'inherit',
+            },
+            h1: {
+              color: 'inherit',
+            },
+            h2: {
+              color: 'inherit',
+            },
+            h3: {
+              color: 'inherit',
+            },
+            h4: {
+              color: 'inherit',
+            },
+            code: {
+              color: 'inherit',
+              backgroundColor: '#f0f0f0',
+              padding: '0.2em 0.4em',
+              borderRadius: '3px',
+              fontSize: '85%',
+            },
+          },
+        },
+      },
     },
     container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
   darkMode: ["class"],
 };

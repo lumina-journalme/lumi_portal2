@@ -5,6 +5,7 @@ import { Input } from "../../components/ui/input";
 import { Checkbox } from "../../components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../../components/ui/dialog";
 import { Label } from "../../components/ui/label";
+import { Link } from "react-router-dom";
 
 const whyLumiFeatures = [
   {
@@ -28,7 +29,7 @@ const tryLumiFeatures = [
   {
     title: "Speak Or Type",
     description: "Easily input your thoughts.",
-    icon: "https://assets.lumime.ai/icon_audio_Text.png"
+    icon: "https://assets.lumime.ai/icon_audio_text.png"
   },
   {
     title: "Automatic Organization",
@@ -60,14 +61,6 @@ const trustCards = [
     descriptionColor: "text-[#00000099]",
     borderClass: "border border-solid border-[#acabc2]",
   },
-];
-
-const socialLinks = [
-  { icon: "/facebook.svg", alt: "Facebook" },
-  { icon: "/twitter.svg", alt: "Twitter" },
-  { icon: "/instagram.svg", alt: "Instagram" },
-  { icon: "/linkedin.svg", alt: "Linked in" },
-  { icon: "/youtube.svg", alt: "You tube" },
 ];
 
 const TypewriterText = ({ text, onComplete, delay = 0 }: { text: string; onComplete?: () => void; delay?: number }) => {
@@ -147,6 +140,7 @@ export const Frame = (): JSX.Element => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const scrollVideoRef = useRef<HTMLVideoElement>(null);
   const [hasPlayedOnce, setHasPlayedOnce] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   
   const [formData, setFormData] = useState({
     name: '',
@@ -165,8 +159,15 @@ export const Frame = (): JSX.Element => {
     localStorage.setItem('waitlist', JSON.stringify(waitlist));
     
     setFormData({ name: '', email: '', phone: '' });
-    
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    setIsDialogOpen(false);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
   };
 
   useEffect(() => {
@@ -195,30 +196,19 @@ export const Frame = (): JSX.Element => {
     );
 
     cardRefs.current.forEach((card) => {
-      if (card) {
-        observer.observe(card);
-      }
+      if (card) observer.observe(card);
     });
 
     tryLumiCardRefs.current.forEach((card) => {
-      if (card) {
-        observer.observe(card);
-      }
+      if (card) observer.observe(card);
     });
 
     trustCardRefs.current.forEach((card) => {
-      if (card) {
-        observer.observe(card);
-      }
+      if (card) observer.observe(card);
     });
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
-    }
-
-    if (scrollVideoRef.current) {
-      observer.observe(scrollVideoRef.current);
-    }
+    if (videoRef.current) observer.observe(videoRef.current);
+    if (scrollVideoRef.current) observer.observe(scrollVideoRef.current);
 
     return () => observer.disconnect();
   }, [hasPlayedOnce]);
@@ -234,8 +224,9 @@ export const Frame = (): JSX.Element => {
           <Input
             id="name"
             value={formData.name}
-            onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+            onChange={handleInputChange}
             required
+            autoComplete="name"
           />
         </div>
         <div className="space-y-2">
@@ -244,8 +235,9 @@ export const Frame = (): JSX.Element => {
             id="email"
             type="email"
             value={formData.email}
-            onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+            onChange={handleInputChange}
             required
+            autoComplete="email"
           />
         </div>
         <div className="space-y-2">
@@ -254,8 +246,9 @@ export const Frame = (): JSX.Element => {
             id="phone"
             type="tel"
             value={formData.phone}
-            onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+            onChange={handleInputChange}
             required
+            autoComplete="tel"
           />
         </div>
         <Button type="submit" className="w-full">Submit</Button>
@@ -265,14 +258,14 @@ export const Frame = (): JSX.Element => {
 
   return (
     <div className="flex flex-col items-start relative bg-[#055FFD]">
-      <header className="flex h-[60px] items-center justify-between px-9 py-[9px] fixed top-0 left-0 right-0 w-full bg-white z-50">
+      <header className="flex h-[60px] items-center justify-between px-9 py-[9px] fixed top-0 left-0 right-0 w-full bg-[#2256DE] z-50">
         <img
-          className="relative w-[100px] h-[17px]"
+          className="relative w-[120px] h-[40px] object-contain"
           alt="Lumi"
-          src="/lumi.svg"
+          src="https://assets.lumime.ai/primary_icon_1.png"
         />
 
-        <Dialog>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button className="h-9 px-4 py-2.5 bg-[#055FFD] rounded-lg">
               <span className="[font-family:'Raleway',Helvetica] font-semibold text-white text-base tracking-[-0.32px]">
@@ -294,12 +287,11 @@ export const Frame = (): JSX.Element => {
 
           <div className="inline-flex flex-col items-start gap-12 relative flex-[0_0_auto]">
             <p className="relative w-[541px] mt-[-1.00px] [font-family:'Raleway',Helvetica] font-medium text-white text-xl tracking-[0] leading-[normal]">
-              Lorem ipsum dolor sit amet, ut adipisci incorrupte vis. Accumsan
-              albucius similique ea nec,
+              Your gentle AI companion for journaling. Reflect on your thoughts and uncover insights over time. 
             </p>
 
             <div className="inline-flex flex-col items-start gap-4 relative flex-[0_0_auto]">
-              <Dialog>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
                   <Button className="w-[230px] h-14 px-9 py-2.5 bg-white rounded-[99px]">
                     <span className="text-[#055FFD] [font-family:'Inter',Helvetica] font-medium text-xl tracking-[-0.40px]">
@@ -372,15 +364,15 @@ export const Frame = (): JSX.Element => {
         </div>
       </section>
 
-      <section className="flex flex-col h-[812px] items-start gap-[60px] px-0 py-[72px] relative self-stretch w-full bg-white">
-        <div className="flex flex-col w-full items-start gap-3 px-[200px] py-0 relative flex-[0_0_auto]">
+      <section className="flex flex-col h-[812px] items-start gap-[60px] px-0 py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-white">
+        <div className="flex flex-col items-start gap-3 px-[200px] py-0 relative self-stretch w-full flex-[0_0_auto]">
           <h2 className="relative self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-[#055FFD] text-5xl tracking-[0.96px] leading-[64px]">
             Why Lumi？ <br />
             Because your thoughts matter.
           </h2>
         </div>
 
-        <div className="flex flex-col w-full h-[622px] items-center gap-2.5 px-[200px] py-0 relative">
+        <div className="flex flex-col items-start gap-8 relative self-stretch w-full flex-[0_0_auto]">
           <div className="relative w-[1040px] h-[622px]">
             <div className="flex gap-9 w-full">
               {whyLumiFeatures.slice(0, 2).map((feature, index) => (
@@ -477,12 +469,12 @@ export const Frame = (): JSX.Element => {
           </h2>
         </div>
 
-        <div className="flex items-start gap-8 relative self-stretch w-full flex-[0_0_auto]">
+        <div className="flex flex-col items-start gap-8 relative self-stretch w-full flex-[0_0_auto]">
           {trustCards.map((card, index) => (
             <Card
               key={index}
               ref={el => trustCardRefs.current[index] = el}
-              className={`flex-1 p-8 ${card.bgColor} ${card.borderClass} rounded-[20px] opacity-0`}
+              className={`w-full p-8 ${card.bgColor} ${card.borderClass} rounded-[20px] opacity-0`}
             >
               <CardContent className="flex flex-col items-start gap-4 p-0">
                 <h3 className={`relative self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold ${card.textColor} text-[28px] tracking-[0] leading-[normal]`}>
@@ -499,25 +491,13 @@ export const Frame = (): JSX.Element => {
 
       <footer className="flex flex-col items-start gap-[72px] px-[200px] py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-[#055FFD]">
         <div className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
-          <div className="flex flex-col items-start gap-8 relative flex-[0_0_auto]">
-            <img
-              className="relative w-[100px] h-[17px]"
-              alt="Lumi"
-              src="/lumi.svg"
-            />
-            <div className="flex items-start gap-6 relative flex-[0_0_auto]">
-              {socialLinks.map((link, index) => (
-                <img
-                  key={index}
-                  className="relative w-6 h-6"
-                  alt={link.alt}
-                  src={link.icon}
-                />
-              ))}
-            </div>
-          </div>
+          <img
+            className="relative w-[120px] h-[40px] object-contain"
+            alt="Lumi"
+            src="https://assets.lumime.ai/primary_icon_1.png"
+          />
 
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button className="w-[230px] h-14 px-9 py-2.5 bg-white rounded-[99px]">
                 <span className="text-[#055FFD] [font-family:'Inter',Helvetica] font-medium text-xl tracking-[-0.40px]">
@@ -534,12 +514,26 @@ export const Frame = (): JSX.Element => {
             © 2024 Lumi. All rights reserved.
           </p>
           <div className="flex items-start gap-8 relative flex-[0_0_auto]">
-            <div className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap">
+            <Link 
+              to="/privacy-policy"
+              className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap hover:underline"
+            >
               Privacy Policy
-            </div>
-            <div className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap">
+            </Link>
+            <Link 
+              to="/terms-of-service"
+              className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap hover:underline"
+            >
               Terms of Service
-            </div>
+            </Link>
+            <a 
+              href="https://chat.whatsapp.com/E3rlNtn0hZT1Mch5Sw8v7J"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap hover:underline"
+            >
+              Contact Us On WhatsApp
+            </a>
           </div>
         </div>
       </footer>
