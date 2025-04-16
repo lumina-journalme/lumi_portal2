@@ -15,5 +15,5 @@ jobs:
         run: |
           gh issue create \
             --title "New Waitlist Submission - $(date +%Y-%m-%d)" \
-            --body "$(echo '${{ github.event.client_payload.data }}' | jq -r '. | "Name: \(.name)\nEmail: \(.email)\nPhone: \(.phone)"')" \
+            --body "Name: ${{ github.event.client_payload.data.name }}\nEmail: ${{ github.event.client_payload.data.email }}\nPhone: ${{ github.event.client_payload.data.phone }}" \
             --repo $REPO 
