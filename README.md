@@ -89,3 +89,43 @@ npm run build
 ## 许可证
 
 [在此添加许可证信息]
+
+## 博客（Blog）内容录入与管理
+
+### 如何写博客
+
+1. **每篇博客为一个 Markdown 文件**，放在 `src/blogs/` 目录下，文件名建议格式为：
+   
+   ```
+   src/blogs/YYYY-MM-DD-slug.md
+   ```
+   例如：`src/blogs/2025-05-18-hello-world.md`
+
+2. **每个 Markdown 须包含 YAML frontmatter**，示例：
+   
+   ```markdown
+   ---
+   title: 博客标题（必填）
+   author: 作者（建议填写）
+   date: 2025-05-18  # 建议用 YYYY-MM-DD
+   summary: 博客摘要（建议填写，显示在列表页）
+   cover: /path/to/cover.jpg  # 可选，封面图片（如无可省略）
+   ---
+
+   正文内容支持标准 Markdown 语法。
+   ```
+
+3. **图片引用**
+   - 推荐将图片放在 `public/blogs/` 或其它静态目录，frontmatter 里的 `cover` 字段用绝对路径（如 `/blogs/cover1.jpg`）。
+   - 正文内图片同理：`![描述](/blogs/cover1.jpg)`
+
+4. **自动上线**
+   - 只需将 `.md` 文件放入 `src/blogs/`，保存后前端会自动读取并渲染，无需重启或手动刷新。
+   - 增删改博客都只需操作 markdown 文件。
+
+5. **注意事项**
+   - `date` 字段建议用 `YYYY-MM-DD`，否则排序或显示可能异常。
+   - 没有 `cover` 字段的博客不会显示封面图。
+   - 列表页和详情页均自动解析 frontmatter，无需额外配置。
+
+---
