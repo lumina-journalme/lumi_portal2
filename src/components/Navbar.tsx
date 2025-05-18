@@ -15,8 +15,8 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full h-[60px] flex items-center px-4 sm:px-9 bg-[#0854e4] shadow-md z-50">
-      <div className="flex items-center gap-4 w-full">
+    <header className="fixed top-0 left-0 w-full h-[60px] flex items-center px-4 sm:px-9 bg-white border-b z-50">
+      <div className="flex items-center gap-8 w-full">
         <Link to="/" className="flex items-center gap-2">
           <img
             className="w-24 h-8 sm:w-32 sm:h-10 object-contain"
@@ -24,19 +24,21 @@ export const Navbar = () => {
             src="https://assets.lumime.ai/primary_icon_1.png"
           />
         </Link>
-        <a
-          href="/"
-          onClick={handleHomeClick}
-          className="ml-4 px-4 py-2 bg-white text-[#0854e4] rounded-lg font-semibold text-base shadow hover:bg-gray-100 transition-all"
-        >
-          Home
-        </a>
-        <Link
-          to="/blog"
-          className="ml-2 px-4 py-2 bg-white text-[#0854e4] rounded-lg font-semibold text-base shadow hover:bg-gray-100 transition-all"
-        >
-          Blog
-        </Link>
+        <nav className="flex gap-6 ml-6">
+          <a
+            href="/"
+            onClick={handleHomeClick}
+            className="px-3 py-1 text-[15px] font-normal text-gray-800 bg-transparent rounded hover:bg-gray-100 hover:text-black transition duration-150 cursor-pointer select-none outline-none focus:bg-gray-200"
+          >
+            Home
+          </a>
+          <Link
+            to="/blog"
+            className="px-3 py-1 text-[15px] font-normal text-gray-800 bg-transparent rounded hover:bg-gray-100 hover:text-black transition duration-150 cursor-pointer select-none outline-none focus:bg-gray-200"
+          >
+            Blog
+          </Link>
+        </nav>
       </div>
     </header>
   );
