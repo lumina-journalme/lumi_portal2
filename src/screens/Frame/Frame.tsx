@@ -6,6 +6,7 @@ import { Checkbox } from "../../components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../../components/ui/dialog";
 import { Label } from "../../components/ui/label";
 import { Link } from "react-router-dom";
+import { Navbar } from '../../components/Navbar';
 
 const whyLumiFeatures = [
   {
@@ -271,37 +272,8 @@ export const Frame = (): JSX.Element => {
 
   return (
     <>
-      {/* 动画样式，可移到全局 CSS */}
-      <style>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(40px) scale(0.98); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
-        }
-      `}</style>
-      <div className="flex flex-col items-start relative bg-[#0854e4] overflow-x-hidden w-full" style={{ scrollSnapType: 'y mandatory' }}>
-        <header className="flex h-16 sm:h-20 items-center justify-between px-4 sm:px-9 py-2 bg-[#0854e4] z-50">
-          <img
-            className="w-24 h-8 sm:w-32 sm:h-10 object-contain"
-            alt="Lumi"
-            src="https://assets.lumime.ai/primary_icon_1.png"
-          />
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <Button className="h-8 sm:h-9 px-3 sm:px-4 text-sm sm:text-base bg-[#0854e4] rounded-lg">
-                <span className="font-semibold text-white">Join Waitlist</span>
-              </Button>
-            </DialogTrigger>
-            <WaitlistForm 
-              formData={formData} 
-              handleInputChange={handleInputChange} 
-              handleSubmit={handleSubmit} 
-            />
-          </Dialog>
-        </header>
-
+      <Navbar />
+      <div className="flex flex-col items-start relative bg-[#0854e4] overflow-x-hidden w-full pt-16" style={{ scrollSnapType: 'y mandatory' }}>
         <div className="h-[60px] w-full"></div>
 
         <section
@@ -567,6 +539,16 @@ export const Frame = (): JSX.Element => {
           </div>
         </footer>
       </div>
+      {/* 动画样式，可移到全局 CSS */}
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(40px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fadeInUp {
+          animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+      `}</style>
     </>
   );
 };

@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useParams, Link } from 'react-router-dom';
 import 'github-markdown-css/github-markdown-light.css';
+import { Navbar } from '../components/Navbar';
 
 const MARKDOWN_TYPES = ['privacy-policy', 'terms-of-service'];
 
@@ -44,16 +45,8 @@ export const MarkdownPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="flex h-[60px] items-center px-9 py-[9px] bg-[#0854e4] shadow-md">
-        <Link to="/">
-          <img
-            className="relative w-[120px] h-[40px] object-contain"
-            alt="Lumi"
-            src="https://assets.lumime.ai/primary_icon_1.png"
-          />
-        </Link>
-      </header>
-      <div className="container mx-auto px-4 py-8">
+      <Navbar />
+      <div className="container mx-auto px-4 py-8 pt-16">
         <div className="bg-white rounded-lg shadow-sm p-8">
           <article className="prose prose-slate max-w-none markdown-body">
             {isLoading && (
