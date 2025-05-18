@@ -131,6 +131,11 @@ export const Frame = (): JSX.Element => {
     phone: ''
   });
 
+  // Section refs for fancy scroll animation
+  const heroRef = useRef<HTMLDivElement>(null);
+  const feelingRef = useRef<HTMLDivElement>(null);
+  const notAloneRef = useRef<HTMLDivElement>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -222,51 +227,100 @@ export const Frame = (): JSX.Element => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    // 新增 section 动画 observer
+    const sectionRefs = [heroRef, feelingRef, notAloneRef];
+    const sectionObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fadeInUp', 'opacity-100');
+          } else {
+            entry.target.classList.remove('animate-fadeInUp', 'opacity-100');
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    sectionRefs.forEach(ref => {
+      if (ref.current) sectionObserver.observe(ref.current);
+    });
+    // PPT翻页式滚轮切换
+    let currentSection = 0;
+    let isScrolling = false;
+    const onWheel = (e: WheelEvent) => {
+      // 只在PC端生效，且只在主section区域生效
+      if (window.innerWidth < 768) return;
+      if (isScrolling) return;
+      const direction = e.deltaY > 0 ? 1 : e.deltaY < 0 ? -1 : 0;
+      if (direction === 0) return;
+      const nextSection = currentSection + direction;
+      if (nextSection < 0 || nextSection >= sectionRefs.length) return;
+      isScrolling = true;
+      currentSection = nextSection;
+      sectionRefs[currentSection].current?.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => { isScrolling = false; }, 900);
+      e.preventDefault();
+    };
+    window.addEventListener('wheel', onWheel, { passive: false });
+    return () => {
+      sectionObserver.disconnect();
+      window.removeEventListener('wheel', onWheel);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col items-start relative bg-[#0854e4]">
-      <header className="flex h-[60px] items-center justify-between px-9 py-[9px] fixed top-0 left-0 right-0 w-full bg-[#0854e4] z-50">
-        <img
-          className="relative w-[120px] h-[40px] object-contain"
-          alt="Lumi"
-          src="https://assets.lumime.ai/primary_icon_1.png"
-        />
-
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button className="h-9 px-4 py-2.5 bg-[#0854e4] rounded-lg">
-              <span className="[font-family:'Raleway',Helvetica] font-semibold text-white text-base tracking-[-0.32px]">
-                Join Waitlist
-              </span>
-            </Button>
-          </DialogTrigger>
-          <WaitlistForm 
-            formData={formData} 
-            handleInputChange={handleInputChange} 
-            handleSubmit={handleSubmit} 
+    <>
+      {/* 动画样式，可移到全局 CSS */}
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(40px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fadeInUp {
+          animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+      `}</style>
+      <div className="flex flex-col items-start relative bg-[#0854e4] overflow-x-hidden w-full" style={{ scrollSnapType: 'y mandatory' }}>
+        <header className="flex h-16 sm:h-20 items-center justify-between px-4 sm:px-9 py-2 bg-[#0854e4] z-50">
+          <img
+            className="w-24 h-8 sm:w-32 sm:h-10 object-contain"
+            alt="Lumi"
+            src="https://assets.lumime.ai/primary_icon_1.png"
           />
-        </Dialog>
-      </header>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button className="h-8 sm:h-9 px-3 sm:px-4 text-sm sm:text-base bg-[#0854e4] rounded-lg">
+                <span className="font-semibold text-white">Join Waitlist</span>
+              </Button>
+            </DialogTrigger>
+            <WaitlistForm 
+              formData={formData} 
+              handleInputChange={handleInputChange} 
+              handleSubmit={handleSubmit} 
+            />
+          </Dialog>
+        </header>
 
-      <div className="h-[60px] w-full"></div>
+        <div className="h-[60px] w-full"></div>
 
-      <section className="flex flex-wrap items-center justify-center gap-12 pt-20 pb-28 px-4 max-w-screen-xl mx-auto w-full bg-[#0854e4]">
-        <div className="flex-1 min-w-[300px] max-w-xl flex flex-col items-start gap-4">
-          <h1 className="w-full mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-7xl tracking-[-1.44px] leading-[80px] break-words">
-            Be Heard. Be Understood. Be Reminded.
-          </h1>
-
-          <div className="flex flex-col items-start gap-12 w-full">
-            <p className="w-full mt-[-1.00px] [font-family:'Raleway',Helvetica] font-medium text-white text-xl tracking-[0] leading-[normal] break-words">
-              Your gentle AI companion for journaling. Reflect on your thoughts and uncover insights over time. 
+        <section
+          id="hero"
+          ref={heroRef}
+          className="flex flex-col md:flex-row items-center justify-center gap-8 h-screen w-full md:max-w-screen-xl md:mx-auto px-2 sm:px-4 bg-[#0854e4] scroll-snap-align-start opacity-0"
+        >
+          <div className="flex-1 w-full max-w-full md:max-w-xl flex flex-col items-start gap-4">
+            <h1 className="w-full font-bold text-white text-3xl sm:text-5xl md:text-7xl leading-tight break-words">
+              Be Heard. Be Understood. Be Reminded.
+            </h1>
+            <p className="w-full mt-2 text-white text-base sm:text-lg md:text-xl leading-normal">
+              Your gentle AI companion for journaling. Reflect on your thoughts and uncover insights over time.
             </p>
-
-            <div className="flex flex-col items-start gap-4 w-full">
+            <div className="w-full sm:w-[230px] mt-4">
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button className="w-[230px] h-14 px-9 py-2.5 bg-white rounded-[99px]">
-                    <span className="text-[#0854e4] [font-family:'Inter',Helvetica] font-medium text-xl tracking-[-0.40px]">
-                      Join Waitlist
-                    </span>
+                  <Button className="w-full h-12 sm:h-14 bg-white rounded-full text-[#0854e4] text-base sm:text-xl">
+                    Join Waitlist
                   </Button>
                 </DialogTrigger>
                 <WaitlistForm 
@@ -277,231 +331,242 @@ export const Frame = (): JSX.Element => {
               </Dialog>
             </div>
           </div>
-        </div>
-
-        <div className="flex-1 flex justify-center min-w-[300px] max-w-xl">
-          <video 
-            className="w-full max-w-md h-auto object-contain rounded-lg"
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-          >
-            <source src="https://assets.lumime.ai/s1.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </section>
-
-      <section className="flex flex-col items-center gap-8 py-20 max-w-screen-xl mx-auto w-full px-4">
-        <div className="flex flex-col items-center gap-[11px] w-full">
-          <h2 className="w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-5xl tracking-[0.96px] leading-[64px] opacity-0 animate-fade-up text-center">
-            Feeling overwhelmed, anxious, <br />
-            or emotionally scattered?
-          </h2>
-        </div>
-        <div className="flex flex-col items-center gap-2.5 w-full">
-          <div className="relative w-full pt-[56.25%]">
+          <div className="flex-1 w-full max-w-full md:max-w-md flex justify-center mt-6 md:mt-0">
             <video 
-              ref={videoRef}
-              className="absolute top-0 left-0 w-full h-full object-cover video-scroll"
+              className="w-full max-w-full sm:max-w-md h-auto object-contain rounded-lg"
+              autoPlay 
+              loop 
               muted 
               playsInline
             >
-              <source src="https://assets.lumime.ai/s2.mp4" type="video/mp4" />
+              <source src="https://assets.lumime.ai/s1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="flex flex-col items-center gap-8 py-20 max-w-screen-xl mx-auto w-full px-4 bg-[#0854e4]">
-        <div className="flex flex-col items-center gap-[11px] w-full">
-          <h2 className="self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-5xl tracking-[0.96px] leading-[64px] text-center">
-            You&#39;re not alone<br />
-            and you don&#39;t need to face it alone either.
-          </h2>
-        </div>
-        <div className="flex flex-col items-center h-[673px] justify-center gap-2.5 w-full">
-          <video 
-            ref={scrollVideoRef}
-            className="relative min-w-60 max-w-[740px] w-full max-h-[672.96px] h-[672.96px] object-cover"
-            muted 
-            playsInline
-          >
-            <source src="https://assets.lumime.ai/s3.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </section>
-
-      <section className="flex flex-col items-center gap-8 py-20 max-w-screen-xl mx-auto w-full px-4 bg-[#0854e4]">
-        <div className="flex flex-col items-center gap-3 w-full">
-          <h2 className="self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-5xl tracking-[0.96px] leading-[64px] text-center">
-            Why Lumi？ <br />
-            Because your thoughts matter.
-          </h2>
-        </div>
-        <div className="flex flex-col items-center gap-8 w-full">
-          <div className="relative w-full max-w-4xl">
-            <div className="flex flex-col md:flex-row gap-9 w-full">
-              {whyLumiFeatures.slice(0, 2).map((feature, index) => (
-                <Card
-                  key={index}
-                  ref={el => cardRefs.current[index] = el}
-                  className={`w-full md:w-[48%] h-[266px] p-8 bg-white rounded-[20px] opacity-0`}
+        <section
+          id="feeling"
+          ref={feelingRef}
+          className="flex flex-col items-center justify-center gap-2 h-screen w-full md:max-w-screen-xl md:mx-auto px-2 sm:px-4 bg-[#0854e4] scroll-snap-align-start opacity-0"
+        >
+          <div className="flex flex-col items-center gap-2 w-full">
+            <h2 className="font-bold text-white text-2xl sm:text-4xl md:text-5xl leading-tight text-center">
+              Feeling overwhelmed, anxious, <br />
+              or emotionally scattered?
+            </h2>
+          </div>
+          <div className="flex flex-col items-center gap-0 w-full">
+            <div className="relative w-full flex justify-center">
+              <div className="w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl">
+                <video 
+                  ref={videoRef}
+                  className="w-full h-auto object-contain rounded-lg video-scroll"
+                  muted 
+                  playsInline
                 >
-                  <CardContent className="flex flex-col items-start gap-5 p-0 h-full">
-                    <div className="flex items-center justify-between w-full">
-                      <h3 className="w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-[#0854e4] text-[28px] tracking-[0] leading-7 whitespace-nowrap">
-                        {feature.title}
-                      </h3>
-                      <div className="w-[62px] h-7 mr-[-2.00px]">
-                        <div className="font-semibold text-transparent text-2xl whitespace-nowrap [font-family:'Raleway',Helvetica] tracking-[0] leading-7">
-                          Try
+                  <source src="https://assets.lumime.ai/s2.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="not-alone"
+          ref={notAloneRef}
+          className="flex flex-col items-center justify-center gap-2 h-screen w-full md:max-w-screen-xl md:mx-auto px-2 sm:px-4 bg-[#0854e4] scroll-snap-align-start opacity-0"
+        >
+          <div className="flex flex-col items-center gap-2 w-full">
+            <h2 className="font-bold text-white text-2xl sm:text-4xl md:text-5xl leading-tight text-center">
+              You're not alone<br />
+              and you don't need to face it alone either.
+            </h2>
+          </div>
+          <div className="flex flex-col items-center gap-0 w-full">
+            <div className="relative w-full flex justify-center">
+              <div className="w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl">
+                <video
+                  ref={scrollVideoRef}
+                  className="w-full h-auto object-contain rounded-lg"
+                  muted
+                  playsInline
+                >
+                  <source src="https://assets.lumime.ai/s3.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="flex flex-col items-center gap-8 py-20 w-full md:max-w-screen-xl md:mx-auto px-4 bg-[#0854e4]">
+          <div className="flex flex-col items-center gap-3 w-full">
+            <h2 className="font-bold text-white text-2xl sm:text-4xl md:text-5xl leading-tight text-center">
+              Why Lumi？ <br />
+              Because your thoughts matter.
+            </h2>
+          </div>
+          <div className="flex flex-col items-center gap-8 w-full">
+            <div className="relative w-full max-w-full md:max-w-4xl">
+              <div className="flex flex-col md:flex-row gap-9 w-full">
+                {whyLumiFeatures.slice(0, 2).map((feature, index) => (
+                  <Card
+                    key={index}
+                    ref={el => cardRefs.current[index] = el}
+                    className={`w-full md:w-[48%] p-8 bg-white rounded-[20px] opacity-0 max-w-full`}
+                  >
+                    <CardContent className="flex flex-col items-start gap-5 p-0">
+                      <div className="flex items-center justify-between w-full">
+                        <h3 className="font-bold text-[#0854e4] text-2xl sm:text-4xl md:text-3xl leading-tight whitespace-nowrap">
+                          {feature.title}
+                        </h3>
+                        <div className="w-[62px] h-7 mr-[-2.00px]">
+                          <div className="font-semibold text-transparent text-2xl whitespace-nowrap [font-family:'Raleway',Helvetica] tracking-[0] leading-7">
+                            Try
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <p className="self-stretch font-medium text-[#00000099] text-xl [font-family:'Raleway',Helvetica] tracking-[0] leading-7">
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-            <Card 
-              ref={el => cardRefs.current[2] = el}
-              className="w-full p-8 mt-8 bg-white rounded-[20px] opacity-0"
-            >
-              <CardContent className="flex-col h-[151px] gap-5 p-0 flex items-start">
-                <div className="flex items-center justify-between w-full">
-                  <h3 className="w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-[#0854e4] text-[28px] tracking-[0] leading-7 whitespace-nowrap">
-                    {whyLumiFeatures[2].title}
-                  </h3>
-                  <div className="w-[62px] h-7 mr-[-2.00px]">
-                    <div className="font-semibold text-transparent text-2xl whitespace-nowrap [font-family:'Raleway',Helvetica] tracking-[0] leading-7">
-                      Try
+                      <p className="self-stretch font-medium text-[#00000099] text-xl [font-family:'Raleway',Helvetica] tracking-[0] leading-7">
+                        {feature.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              <Card 
+                ref={el => cardRefs.current[2] = el}
+                className="w-full p-8 mt-8 bg-white rounded-[20px] opacity-0 max-w-full"
+              >
+                <CardContent className="flex-col gap-5 p-0 flex items-start">
+                  <div className="flex items-center justify-between w-full">
+                    <h3 className="font-bold text-[#0854e4] text-2xl sm:text-4xl md:text-3xl leading-tight whitespace-nowrap">
+                      {whyLumiFeatures[2].title}
+                    </h3>
+                    <div className="w-[62px] h-7 mr-[-2.00px]">
+                      <div className="font-semibold text-transparent text-2xl whitespace-nowrap [font-family:'Raleway',Helvetica] tracking-[0] leading-7">
+                        Try
+                      </div>
                     </div>
                   </div>
-                </div>
-                <p className="self-stretch font-medium text-[#00000099] text-xl [font-family:'Raleway',Helvetica] tracking-[0] leading-7">
-                  {whyLumiFeatures[2].description}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="flex flex-col items-center justify-center gap-9 py-20 max-w-screen-xl mx-auto w-full px-4 bg-[#0854e4]">
-        <h2 className="self-stretch h-16 mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-5xl text-center tracking-[0.96px] leading-[64px] whitespace-nowrap">
-          Try Lumi free!
-        </h2>
-        <div className="flex flex-wrap items-start justify-center gap-8 w-full">
-          {tryLumiFeatures.map((feature, index) => (
-            <Card
-              key={index}
-              ref={el => tryLumiCardRefs.current[index] = el}
-              className="flex w-80 h-[229px] items-start gap-2.5 p-8 bg-[#f4f6fd] rounded-3xl border-0 border-none opacity-0"
-            >
-              <CardContent className="flex flex-col items-start gap-6 p-0 flex-1 grow">
-                <img
-                  className="w-14 h-14"
-                  alt={feature.title}
-                  src={feature.icon}
-                />
-                <div className="flex flex-col items-start gap-2 w-full">
-                  <h3 className="w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-[#000000cc] text-xl tracking-[0] leading-[normal] whitespace-nowrap">
-                    {feature.title}
-                  </h3>
-                  <p className="self-stretch [font-family:'Raleway',Helvetica] font-normal text-black text-base tracking-[0.32px] leading-5">
-                    {feature.description}
+                  <p className="self-stretch font-medium text-[#00000099] text-xl [font-family:'Raleway',Helvetica] tracking-[0] leading-7">
+                    {whyLumiFeatures[2].description}
                   </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <section className="flex flex-col items-center gap-8 py-20 max-w-screen-xl mx-auto w-full px-4 bg-[#0854e4]">
-        <div className="flex flex-col items-center gap-[11px] w-full">
-          <h2 className="self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-white text-5xl tracking-[0.96px] leading-[64px] text-center">
-            Trust & Security
-          </h2>
-        </div>
-        <div className="flex flex-col items-center gap-8 w-full">
-          {trustCards.map((card, index) => (
-            <Card
-              key={index}
-              ref={el => trustCardRefs.current[index] = el}
-              className={`w-full max-w-2xl p-8 bg-white rounded-[20px] opacity-0`}
-            >
-              <CardContent className="flex flex-col items-start gap-4 p-0">
-                <h3 className={`self-stretch mt-[-1.00px] [font-family:'Raleway',Helvetica] font-bold text-[#0854e4] text-[28px] tracking-[0] leading-[normal]`}>
-                  {card.title}
-                </h3>
-                <p className={`self-stretch [font-family:'Raleway',Helvetica] font-medium text-[#00000099] text-xl tracking-[0] leading-[normal]`}>
-                  {card.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <footer className="flex flex-col items-start gap-[72px] px-[200px] py-[72px] relative self-stretch w-full flex-[0_0_auto] bg-[#0854e4]">
-        <div className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
-          <img
-            className="relative w-[120px] h-[40px] object-contain"
-            alt="Lumi"
-            src="https://assets.lumime.ai/primary_icon_1.png"
-          />
-
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <Button className="w-[230px] h-14 px-9 py-2.5 bg-white rounded-[99px]">
-                <span className="text-[#0854e4] [font-family:'Inter',Helvetica] font-medium text-xl tracking-[-0.40px]">
-                  Join Waitlist
-                </span>
-              </Button>
-            </DialogTrigger>
-            <WaitlistForm 
-              formData={formData} 
-              handleInputChange={handleInputChange} 
-              handleSubmit={handleSubmit} 
-            />
-          </Dialog>
-        </div>
-
-        <div className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
-          <p className="relative flex-1 mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal]">
-            © 2025 Lumi. All rights reserved.
-          </p>
-          <div className="flex items-start gap-8 relative flex-[0_0_auto]">
-            <Link 
-              to="/privacy-policy"
-              className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap hover:underline"
-            >
-              Privacy Policy
-            </Link>
-            <Link 
-              to="/terms-of-service"
-              className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap hover:underline"
-            >
-              Terms of Service
-            </Link>
-            <a 
-              href="https://chat.whatsapp.com/E3rlNtn0hZT1Mch5Sw8v7J"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative w-fit mt-[-1.00px] [font-family:'Raleway',Helvetica] font-normal text-white text-base tracking-[0] leading-[normal] whitespace-nowrap hover:underline"
-            >
-              Contact Us On WhatsApp
-            </a>
+                </CardContent>
+              </Card>
+            </div>
           </div>
-        </div>
-      </footer>
-    </div>
+        </section>
+
+        <section className="flex flex-col items-center justify-center gap-9 py-20 w-full md:max-w-screen-xl md:mx-auto px-4 bg-[#0854e4]">
+          <h2 className="font-bold text-white text-2xl sm:text-4xl md:text-5xl leading-tight text-center whitespace-nowrap">
+            Try Lumi free!
+          </h2>
+          <div className="flex flex-wrap items-start justify-center gap-8 w-full">
+            {tryLumiFeatures.map((feature, index) => (
+              <Card
+                key={index}
+                ref={el => tryLumiCardRefs.current[index] = el}
+                className="flex w-full sm:w-80 h-[229px] items-start gap-2.5 p-8 bg-[#f4f6fd] rounded-3xl border-0 border-none opacity-0 max-w-full"
+              >
+                <CardContent className="flex flex-col items-start gap-6 p-0 flex-1 grow">
+                  <img
+                    className="w-14 h-14"
+                    alt={feature.title}
+                    src={feature.icon}
+                  />
+                  <div className="flex flex-col items-start gap-2 w-full">
+                    <h3 className="font-bold text-[#000000cc] text-2xl sm:text-4xl md:text-2xl leading-tight whitespace-nowrap">
+                      {feature.title}
+                    </h3>
+                    <p className="self-stretch [font-family:'Raleway',Helvetica] font-normal text-black text-base tracking-[0.32px] leading-5">
+                      {feature.description}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="flex flex-col items-center gap-8 py-20 w-full md:max-w-screen-xl md:mx-auto px-4 bg-[#0854e4]">
+          <div className="flex flex-col items-center gap-[11px] w-full">
+            <h2 className="font-bold text-white text-2xl sm:text-4xl md:text-5xl leading-tight text-center">
+              Trust & Security
+            </h2>
+          </div>
+          <div className="flex flex-col items-center gap-8 w-full">
+            {trustCards.map((card, index) => (
+              <Card
+                key={index}
+                ref={el => trustCardRefs.current[index] = el}
+                className={`w-full max-w-full md:max-w-2xl p-8 bg-white rounded-[20px] opacity-0`}
+              >
+                <CardContent className="flex flex-col items-start gap-4 p-0">
+                  <h3 className="font-bold text-[#0854e4] text-2xl sm:text-4xl md:text-3xl leading-tight">
+                    {card.title}
+                  </h3>
+                  <p className="font-medium text-[#00000099] text-xl tracking-[0] leading-[normal]">
+                    {card.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <footer className="flex flex-col items-center md:items-start gap-8 px-4 md:px-[200px] py-[72px] w-full bg-[#0854e4]">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between w-full gap-4 md:gap-0">
+            <img
+              className="w-[120px] h-[40px] object-contain mb-4 md:mb-0"
+              alt="Lumi"
+              src="https://assets.lumime.ai/primary_icon_1.png"
+            />
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="w-[230px] h-14 px-9 py-2.5 bg-white rounded-[99px]">
+                  <span className="text-[#0854e4] font-medium text-xl tracking-[-0.40px]">
+                    Join Waitlist
+                  </span>
+                </Button>
+              </DialogTrigger>
+              <WaitlistForm 
+                formData={formData} 
+                handleInputChange={handleInputChange} 
+                handleSubmit={handleSubmit} 
+              />
+            </Dialog>
+          </div>
+          <div className="flex flex-col items-center md:flex-row md:items-center md:justify-between w-full gap-2 md:gap-0 mt-6">
+            <p className="text-white text-base text-center md:text-left">
+              © 2025 Lumi. All rights reserved.
+            </p>
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-8 mt-2 md:mt-0">
+              <Link 
+                to="/privacy-policy"
+                className="text-white text-base whitespace-nowrap hover:underline"
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                to="/terms-of-service"
+                className="text-white text-base whitespace-nowrap hover:underline"
+              >
+                Terms of Service
+              </Link>
+              <a 
+                href="https://chat.whatsapp.com/E3rlNtn0hZT1Mch5Sw8v7J"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white text-base whitespace-nowrap hover:underline"
+              >
+                Contact Us On WhatsApp
+              </a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 };
