@@ -44,7 +44,7 @@ export const MarkdownPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="flex h-[60px] items-center px-9 py-[9px] bg-[#2256DE] shadow-md">
+      <header className="flex h-[60px] items-center px-9 py-[9px] bg-[#0854e4] shadow-md">
         <Link to="/">
           <img
             className="relative w-[120px] h-[40px] object-contain"
