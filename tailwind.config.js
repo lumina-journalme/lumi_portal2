@@ -6,6 +6,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      spacing: {
+        'hero-pt-lg': '72px',
+        'hero-pr-lg': '200px',
+        'hero-pb-lg': '118px',
+        'hero-pl-lg': '154px',
+        'hero-gap-lg': '104px',
+      },
       colors: {
         "neutral-100": "var(--neutral-100)",
         "neutral-colors-100": "var(--neutral-colors-100)",
@@ -45,6 +52,7 @@ module.exports = {
         },
       },
       fontFamily: {
+        montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         "body-bold": "var(--body-bold-font-family)",
         "text-single-200-regular": "var(--text-single-200-regular-font-family)",
         sans: [

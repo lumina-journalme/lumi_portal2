@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Label } from "../../components/ui/label";
 import { Link } from "react-router-dom";
 import { Navbar } from '../../components/Navbar';
+import { TypeAnimation } from "react-type-animation";
 
 const whyLumiFeatures = [
   {
@@ -272,20 +273,32 @@ export const Frame = (): JSX.Element => {
 
   return (
     <>
-      <Navbar />
-      <div className="flex flex-col items-start relative bg-[#0854e4] overflow-x-hidden w-full pt-16" style={{ scrollSnapType: 'y mandatory' }}>
-        <div className="h-[60px] w-full"></div>
+      <Navbar onJoinWaitlistClick={() => setIsDialogOpen(true)} />
+      <div className="flex flex-col items-start relative bg-[#0854e4] overflow-x-hidden w-full">
+        <div className="h-[72px] w-full"></div>
 
         <section
           id="hero"
           ref={heroRef}
-          className="flex flex-col md:flex-row items-center justify-center gap-8 h-screen w-full md:max-w-screen-xl md:mx-auto px-2 sm:px-4 bg-[#0854e4] scroll-snap-align-start opacity-0"
+          className="flex flex-col md:flex-row items-center justify-center h-screen w-full px-8 lg:px-0 lg:pl-hero-pl-lg lg:pr-hero-pr-lg lg:pt-hero-pt-lg lg:pb-hero-pb-lg lg:gap-hero-gap-lg"
         >
-          <div className="flex-1 w-full max-w-full md:max-w-xl flex flex-col items-start gap-4">
-            <h1 className="w-full font-bold text-white text-3xl sm:text-5xl md:text-7xl leading-tight break-words">
-              Be Heard. Be Understood. Be Reminded.
-            </h1>
-            <p className="w-full mt-2 text-white text-base sm:text-lg md:text-xl leading-normal">
+          <div className="flex-1 w-full flex flex-col items-start gap-4">
+            <TypeAnimation
+              sequence={[
+                'Be Heard.',
+                500,
+                'Be Heard.\nBe Understood.',
+                500,
+                'Be Heard.\nBe Understood.\nBe Reminded.',
+                1500,
+              ]}
+              wrapper="h1"
+              speed={50}
+              className="w-full font-bold text-white text-3xl sm:text-5xl md:text-7xl leading-[112%] tracking-[-1.44px] break-words"
+              style={{ whiteSpace: 'pre-line', minHeight: '250px' }}
+              cursor={false}
+            />
+            <p className="w-full mt-2 text-white text-base sm:text-lg md:text-xl leading-[150%]">
               Your gentle AI companion for journaling. Reflect on your thoughts and uncover insights over time.
             </p>
             <div className="w-full sm:w-[230px] mt-4">
@@ -303,9 +316,9 @@ export const Frame = (): JSX.Element => {
               </Dialog>
             </div>
           </div>
-          <div className="flex-1 w-full max-w-full md:max-w-md flex justify-center mt-6 md:mt-0">
+          <div className="flex-1 w-full flex justify-center mt-6 md:mt-0">
             <video 
-              className="w-full max-w-full sm:max-w-md h-auto object-contain rounded-lg"
+              className="w-full h-auto object-contain rounded-lg"
               autoPlay 
               loop 
               muted 
