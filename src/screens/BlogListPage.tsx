@@ -42,7 +42,7 @@ export const BlogListPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
+      <Navbar backgroundColor="bg-white" />
       <div className="max-w-3xl mx-auto px-4 py-12 pt-16">
         {/* <h1 className="text-4xl font-bold mb-8 text-center text-[#0854e4]">Blog</h1> */}
         <div className="flex flex-col gap-8">
@@ -78,4 +78,4 @@ export const BlogListPage = () => {
       </div>
     </div>
   );
-}; 
+};

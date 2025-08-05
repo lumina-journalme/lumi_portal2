@@ -23,7 +23,7 @@ export const BlogDetailPage = () => {
   if (!blog) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Navbar />
+        <Navbar backgroundColor="bg-white" />
         <div className="max-w-2xl mx-auto px-4 py-12 pt-16 text-center text-gray-500">Blog not found.</div>
       </div>
     );
@@ -31,7 +31,7 @@ export const BlogDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
+      <Navbar backgroundColor="bg-white" />
       <div className="max-w-2xl mx-auto px-4 py-12 pt-16">
         <h1 className="text-3xl font-bold mb-2 text-[#0854e4]">{blog.title}</h1>
         <div className="flex items-center text-sm text-gray-400 gap-4 mb-6">
@@ -44,4 +44,4 @@ export const BlogDetailPage = () => {
       </div>
     </div>
   );
-}; 
+};

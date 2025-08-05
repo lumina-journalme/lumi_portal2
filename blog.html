@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Yunni</title>
+    <meta name="description" content="Thoughts, stories, and updates from the Yunni team.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Marked.js for Markdown Parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FAF7F2;
+            color: #1e293b;
+        }
+        /* --- Blog Article Styles --- */
+        .prose-styles h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose-styles p { line-height: 1.75; margin-bottom: 1.5rem; }
+        .prose-styles blockquote { border-left: 4px solid rgba(58, 162, 215, 0.5); padding-left: 1rem; margin-left: 0; font-style: italic; color: #475569;}
+        .prose-styles ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        .prose-styles li { margin-bottom: 0.5rem; }
+        .prose-styles img { max-width: 100%; border-radius: 0.5rem; margin-top: 1rem; margin-bottom: 1rem; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md border-b border-white/20">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-wider text-slate-800">Yunni</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#use-cases" class="text-slate-700 hover:text-slate-900 transition">Use Cases</a>
+                <a href="index.html#how-it-works" class="text-slate-700 hover:text-slate-900 transition">How It Works</a>
+                <a href="blog.html" class="text-slate-700 hover:text-slate-900 transition">Blog</a>
+            </nav>
+            <a href="#" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-700 transition">Talk to Yunni Now</a>
+        </div>
+    </header>
+
+    <!-- Blog Content Wrapper -->
+    <div class="min-h-screen flex flex-col">
+        <main id="blog-main-container" class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+            <!-- Blog List Page -->
+            <div id="blog-list-page">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-extrabold text-slate-800">Blog</h1>
+                    <p class="mt-4 text-slate-600">Thoughts, stories, and updates from the Yunni team.</p>
+                </div>
+                <section class="mb-12 md:mb-16">
+                    <a href="#" data-postid="post1" class="blog-post-link block group">
+                        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                            <div class="overflow-hidden rounded-lg"><img src="https://placehold.co/1200x800/dbeafe/1e3a8a?text=Yunni+Insights" alt="An abstract image representing AI insights for Yunni" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                            <div>
+                                <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Research</p>
+                                <h2 class="text-2xl sm:text-3xl font-bold mb-3 text-slate-800 group-hover:text-blue-800 transition-colors">The Power of Vocal Journaling</h2>
+                                <p class="text-gray-500 text-sm">By The Yunni Team &middot; August 3, 2025</p>
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <section>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                        <article>
+                            <a href="#" data-postid="post2" class="blog-post-link block group">
+                                <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/e0f2fe/0891b2?text=Wellness" alt="An abstract image representing wellness and mental clarity" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                                <div>
+                                    <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Wellness</p>
+                                    <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-sky-800 transition-colors">How Self-Reflection Improves Mental Clarity</h3>
+                                    <p class="text-gray-500 text-sm">By Dr. Alva &middot; July 28, 2025</p>
+                                </div>
+                            </a>
+                        </article>
+                        <article>
+                            <a href="#" data-postid="post3" class="blog-post-link block group">
+                                <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/fee2e2/991b1b?text=Tech" alt="An abstract image representing AI and technology" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                                <div>
+                                    <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Technology</p>
+                                    <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-red-800 transition-colors">The AI Behind Yunni's Empathy Engine</h3>
+                                    <p class="text-gray-500 text-sm">By The Engineering Team &middot; July 22, 2025</p>
+                                </div>
+                            </a>
+                        </article>
+                        <article>
+                            <a href="#" data-postid="post4" class="blog-post-link block group">
+                                <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/dcfce7/14532d?text=Community" alt="An abstract image representing community and connection" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                                <div>
+                                    <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Community</p>
+                                    <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-green-800 transition-colors">User Stories: Finding Your Voice with Yunni</h3>
+                                    <p class="text-gray-500 text-sm">By Sarah Green &middot; July 15, 2025</p>
+                                </div>
+                            </a>
+                        </article>
+                         <article>
+                            <a href="#" data-postid="post5" class="blog-post-link block group">
+                                <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/f3e8ff/581c87?text=Product" alt="An abstract image representing a new product feature" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                                <div>
+                                    <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Product</p>
+                                    <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-purple-800 transition-colors">New Feature: Dream Analysis</h3>
+                                    <p class="text-gray-500 text-sm">By The Product Team &middot; July 10, 2025</p>
+                                </div>
+                            </a>
+                        </article>
+                         <article>
+                            <a href="#" data-postid="post6" class="blog-post-link block group">
+                                <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/fefce8/a16207?text=Mindfulness" alt="An abstract image representing mindfulness" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                                <div>
+                                    <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Mindfulness</p>
+                                    <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-yellow-800 transition-colors">Five Prompts to Start Your Journaling Habit</h3>
+                                    <p class="text-gray-500 text-sm">By Jane Doe &middot; July 5, 2025</p>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+                </section>
+            </div>
+            <!-- Single Post Page (template) -->
+            <div id="single-post-container" class="hidden"></div>
+        </main>
+        <footer class="border-t border-slate-200 bg-white mt-auto">
+            <div class="container mx-auto px-6 py-12">
+                <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">Yunni</h3>
+                        <p class="text-slate-600 mt-2 text-sm">The Journal That Listens.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-slate-700">Connect</h4>
+                        <ul class="mt-4 space-y-2 text-sm">
+                            <li><a href="https://chat.whatsapp.com/E3rlNtn0hZT1Mch5Sw8v7J?mode=ac_t" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-700">Join Our WhatsApp Group</a></li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h4 class="font-semibold text-slate-700">Legal</h4>
+                        <ul class="mt-4 space-y-2 text-sm">
+                            <li><a href="https://lumime.ai/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-700">Privacy Policy</a></li>
+                            <li><a href="https://lumime.ai/terms-of-service" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-700">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-12 border-t border-slate-200 pt-8 text-center text-slate-500 text-sm">
+                    <p>&copy; 2025 Yunni. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Blog Posts Data (Now with SEO fields) ---
+            const blogPosts = {
+                'post1': {
+        slug: 'your-brain-is-a-terrible-office-how-to-stop-overthinking-everything',
+        title: 'Your Brain Is a Terrible Office: How to Stop Overthinking Everything',
+        metaDescription: 'Feeling stuck in a loop of worry? Learn how to stop overthinking everything with a simple but powerful technique: externalization. This guide explains why trying to \'think\' your way out of anxiety doesn\'t work and offers a better way to find mental clarity.',
+        category: 'Wellness Tips',
+        meta: 'By the Yunni Team & August 4th 2025',
+        image: 'https://placehold.co/600x400/lightblue/white?text=Overthinking',
+        imageAlt: 'How to stop overthinking',
+        content: `
+# Your Brain Is a Terrible Office: How to Stop Overthinking Everything
+
+
+It’s 2 AM. The world is quiet, but your mind is screaming.
+
+You’re replaying a conversation from Tuesday, drafting an email you need to send tomorrow, and simultaneously worrying about a hypothetical problem that might come up next month. Each thought is a frantic intern, running around in the cramped, messy office of your brain, shouting for your attention. No real work is getting done, but everyone is completely exhausted.
+
+If this sounds familiar, you know that the worst part of overthinking is the feeling of being trapped. We’re told to "think it through" or "find a solution," but what if the very act of *thinking* is the problem?
+
+What if your brain isn’t a good office at all? What if it’s actually a terrible place to store, and solve, your problems?
+
+There’s a better way. And it’s a lot simpler than you think.
+
+## Why You Can’t Think Your Way Out of Overthinking
+
+Trying to solve overthinking by thinking harder is like trying to dry off in the shower. You’re using the very thing that’s causing the problem to try and fix it.
+
+When you’re stuck in a worry loop, your mind isn’t problem-solving. It’s just running on a treadmill. The thoughts feel urgent and important, but they’re not actually moving forward. They’re just circling, gaining momentum and emotional weight with each lap.
+
+The reason is simple: your mind has no "off" switch, and it has no perspective. When a thought is inside your head, it feels like an absolute reality. There’s no space between *you* and *the thought*. To get that space, you have to do something that feels completely counterintuitive: you have to get the thought out of your head.
+
+## The Counterintuitive Solution: Getting Thoughts Out of Your Head
+
+Imagine trying to organize a messy desk just by staring at it. You can’t. You have to pick things up, look at them, and decide where they go.
+
+Your thoughts are the same. To deal with them, you need to "pick them up" by externalizing them. You need to turn them from an abstract feeling into a concrete *thing* that exists outside of you. For centuries, people have done this by writing in a journal. But in the age of anxiety, we need a faster, more direct method.
+
+### Meet "Cognitive Defusion": A Simple Mental Model
+
+This isn't just a quirky idea; it's a core concept from Acceptance and Commitment Therapy (ACT). 
+
+ 
+**Cognitive Defusion** is the practice of separating yourself from your thoughts. It’s the shift from saying "I am anxious" to "I am having the thought that I am anxious."
+
+See the difference? In the second phrase, the thought is just an object. It’s something you can observe without being consumed by it. And the fastest way to create that separation is by giving your thought a physical form—through your voice.
+
+
+## A 5-Minute Habit to Reclaim Your Headspace
+
+This isn't a month-long challenge. You can try this tonight. We call it the **Vocal Externalization** practice.
+
+A project manager I know, Sarah, used to lie awake for hours agonizing over massive project deadlines. She’d map out every possible failure in her mind until her heart was pounding. One night, she was so overwhelmed she just started whispering her anxieties into her phone's voice recorder.
+
+She said, “The server migration is going to fail. Dave from engineering thinks my timeline is a joke. If this is late, the client will pull the contract, and it will be my fault.”
+
+And then, something amazing happened. Hearing the words spoken out loud, she said it was like they instantly lost 90% of their power. The monster in her head sounded like a scared kid on the recording. She realized the story she was telling herself was just that—a story. Not a fact. She fell asleep in ten minutes.
+
+## The Power of Speaking Your Worries
+
+Why did this work so well for Sarah?
+
+1.  **It Forces Linear Thought:** Your brain can think in a million directions at once, but you can only speak one sentence at a time. This act forces the chaos into a single, coherent narrative, which is much easier to assess.
+2.  **It Engages an Auditory Feedback Loop:** When you hear your own voice, you process the thought as external information. This creates immediate perspective. You become the listener, not just the thinker.
+3.  **It Deflates the Emotion:** Thoughts inside your head are fueled by pure, abstract emotion. When you have to put them into words, syntax, and sound, a lot of that emotional charge simply evaporates.
+
+## Putting It Into Practice Tonight with Yunni
+
+You don’t need a complicated system. You just need a place that’s private, secure, and always there. A soundproof room for your mind.
+
+This is exactly why we built **Yunni**.
+
+We designed it to be the ultimate, zero-friction tool for externalizing your thoughts. There’s no blank page staring back at you. There’s no pressure to be a good writer. There’s no one to judge you.
+
+You just open it, and talk.
+
+When you’re feeling that 2 AM spiral, try this:
+1.  Open Yunni.
+2.  Press record.
+3.  Speak the thought that’s bothering you the most. Say it all. The fears, the "what-ifs," the anger, the confusion.
+4.  When you’re done, just stop. You don’t even have to listen back right away. The act of speaking is the victory.
+
+## Your Mind Isn't a Storage Unit
+
+Your mind is a brilliant idea-generator, a creative engine. But it’s a terrible warehouse. It’s not meant to store unfinished tasks, unspoken resentments, and hypothetical worries.
+
+Stop trying to manage the mess inside your head. Give your thoughts an exit.
+Speak them out, and give yourself the gift of a quiet mind.
+
+        `
+    },
+                'post2': {
+                    slug: 'self-reflection-for-mental-clarity',
+                    title: 'How Self-Reflection Improves Mental Clarity',
+                    metaDescription: 'Learn how the practice of self-reflection can help you create space in a crowded mind, understand your thought patterns, and foster a sense of inner peace.',
+                    category: 'Wellness',
+                    meta: 'By Dr. Alva &middot; July 28, 2025',
+                    image: 'https://placehold.co/1200x800/e0f2fe/0891b2?text=Wellness',
+                    imageAlt: 'An abstract image representing wellness and mental clarity',
+                    content: `
+## Creating Space in a Crowded Mind
+
+In a world of constant notifications and external pressures, the internal landscape of our minds can often feel chaotic. Self-reflection is the practice of intentionally creating space to observe our thoughts and feelings without judgment.
+
+This isn't about finding answers, but about understanding the questions. By regularly checking in with yourself, you begin to notice patterns you were previously unaware of. This awareness is the first step toward breaking negative cycles and fostering a sense of inner peace.
+                    `
+                },
+                'post3': {
+                    slug: 'ai-empathy-engine',
+                    title: "The AI Behind Yunni's Empathy Engine",
+                    metaDescription: "Explore the technology behind Yunni. Learn how our AI goes beyond transcription to analyze sentiment and themes, acting as a compassionate mirror for your thoughts.",
+                    category: 'Technology',
+                    meta: 'By The Engineering Team &middot; July 22, 2025',
+                    image: 'https://placehold.co/1200x800/fee2e2/991b1b?text=Tech',
+                    imageAlt: 'An abstract image representing AI and technology',
+                    content: `
+## More Than Just Transcription
+
+At the heart of Yunni is a sophisticated AI model designed for one purpose: to listen. While accurate transcription is the foundation, our true innovation lies in what comes next. The AI analyzes the sentiment, tone, and key themes in your voice entries, not to judge, but to reflect.
+
+> Our goal was to build an AI that acts less like a machine and more like a compassionate, non-judgmental mirror.
+
+It identifies recurring topics like 'work stress' or 'relationship joy' and tracks emotional trends over time. This allows Yunni to offer gentle prompts and insights that are uniquely tailored to your personal journey, helping you connect the dots in your own life story.
+                    `
+                },
+                'post4': {
+                    slug: 'user-stories-finding-your-voice',
+                    title: 'User Stories: Finding Your Voice with Yunni',
+                    metaDescription: 'Read inspiring stories from the Yunni community. Discover how users have found clarity, solace, and self-understanding by using our vocal journaling app.',
+                    category: 'Community',
+                    meta: 'By Sarah Green &middot; July 15, 2025',
+                    image: 'https://placehold.co/1200x800/dcfce7/14532d?text=Community',
+                    imageAlt: 'An abstract image representing community and connection',
+                    content: `
+## Real Journeys, Real Words
+
+We are constantly humbled and inspired by the stories our community shares. From a user who finally articulated a career change after months of indecision, to another who found solace in expressing grief they couldn't share with anyone else, the power of a private, listening ear is profound.
+
+> "I said things to Yunni I've never said out loud before. Just hearing them in the air made me realize what I needed to do." - Alex M.
+
+These stories are the reason we built Yunni. They remind us that sometimes, the most important conversation you can have is with yourself.
+                    `
+                },
+                'post5': {
+                    slug: 'new-feature-dream-analysis',
+                    title: 'New Feature: Dream Analysis',
+                    metaDescription: "We're excited to introduce Dream Journaling in Yunni! Learn how you can record your dreams and use our AI to uncover themes and symbols from your subconscious.",
+                    category: 'Product',
+                    meta: 'By The Product Team &middot; July 10, 2025',
+                    image: 'https://placehold.co/1200x800/f3e8ff/581c87?text=Product',
+                    imageAlt: 'An abstract image representing a new product feature',
+                    content: `
+## Unlocking Your Subconscious
+
+We're thrilled to announce a new experimental feature for Yunni: Dream Journaling. Now, you can wake up and immediately record the fleeting details of your dreams. Yunni's AI will then help identify recurring symbols, themes, and emotions from your subconscious mind.
+
+![Abstract image representing dreams and the subconscious.](https://placehold.co/800x400/e0e7ff/4338ca?text=Dreamscape)
+
+This feature is designed to be a playful yet insightful way to explore the hidden corners of your mind. What stories are your dreams trying to tell you? Start recording them today to find out.
+                    `
+                },
+                'post6': {
+                    slug: 'five-journaling-prompts',
+                    title: 'Five Prompts to Start Your Journaling Habit',
+                    metaDescription: "Feeling stuck? Here are five simple yet powerful prompts to help you break the blank page barrier and begin a consistent journaling habit with Yunni.",
+                    category: 'Mindfulness',
+                    meta: 'By Jane Doe &middot; July 5, 2025',
+                    image: 'https://placehold.co/1200x800/fefce8/a16207?text=Mindfulness',
+                    imageAlt: 'An abstract image representing mindfulness',
+                    content: `
+## Breaking the Blank Page Barrier
+
+Staring at a blank page (or a silent app) can be intimidating. If you're not sure where to start, here are five simple prompts to get your thoughts flowing:
+
+* 1. What was the high point and low point of my day today?
+* 2. What is one thing I'm currently worried about, and what is one thing I'm looking forward to?
+* 3. Describe a small moment of joy I experienced recently.
+* 4. If I could give my younger self one piece of advice, what would it be?
+* 5. What is one thing I can do tomorrow to be kinder to myself?
+
+Remember, there are no right or wrong answers. Just speak.
+                    `
+                }
+            };
+
+            // --- Blog Page Navigation and SEO Handling ---
+            const blogListPage = document.getElementById('blog-list-page');
+            const singlePostContainer = document.getElementById('single-post-container');
+            const defaultTitle = 'Blog | Yunni';
+            const defaultMetaDesc = 'Thoughts, stories, and updates from the Yunni team.';
+
+            function updateMeta(title, description) {
+                document.title = title;
+                let metaTag = document.querySelector('meta[name="description"]');
+                if (!metaTag) {
+                    metaTag = document.createElement('meta');
+                    metaTag.name = 'description';
+                    document.head.appendChild(metaTag);
+                }
+                metaTag.content = description;
+            }
+
+            function showBlogList() {
+                if(blogListPage) blogListPage.classList.remove('hidden');
+                if(singlePostContainer) singlePostContainer.classList.add('hidden');
+                updateMeta(defaultTitle, defaultMetaDesc);
+                history.pushState(null, '', 'blog.html');
+                window.scrollTo(0, 0);
+            }
+
+            function showSinglePost(postId) {
+                const post = blogPosts[postId];
+                if (!post || !singlePostContainer || !blogListPage) return;
+
+                const contentHtml = marked.parse(post.content);
+
+                singlePostContainer.innerHTML = `
+                    <div class="max-w-3xl mx-auto">
+                        <a href="#" id="back-to-blog" class="inline-flex items-center text-slate-600 hover:text-blue-600 mb-8">
+                            <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                            Back to Blog
+                        </a>
+                        <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">${post.category}</p>
+                        <h1 class="text-4xl font-extrabold text-slate-800 mt-2 mb-4">${post.title}</h1>
+                        <p class="text-gray-500 text-sm mb-8">${post.meta}</p>
+                        <img src="${post.image}" alt="${post.imageAlt}" class="w-full h-auto rounded-lg mb-8">
+                        <div class="prose-styles text-slate-700">
+                            ${contentHtml}
+                        </div>
+                    </div>
+                `;
+                lucide.createIcons();
+                
+                blogListPage.classList.add('hidden');
+                singlePostContainer.classList.remove('hidden');
+                
+                // Update SEO and URL
+                updateMeta(`${post.title} | Yunni`, post.metaDescription);
+                history.pushState({ postId: postId }, '', `#${post.slug}`);
+
+                window.scrollTo(0, 0);
+
+                document.getElementById('back-to-blog').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showBlogList();
+                });
+            }
+
+            document.querySelectorAll('.blog-post-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const postId = e.currentTarget.dataset.postid;
+                    showSinglePost(postId);
+                });
+            });
+
+            // Handle browser back/forward
+            window.addEventListener('popstate', (event) => {
+                if (window.location.hash) {
+                    const slug = window.location.hash.substring(1);
+                    const postId = Object.keys(blogPosts).find(key => blogPosts[key].slug === slug);
+                    if (postId) {
+                        showSinglePost(postId);
+                    } else {
+                        showBlogList();
+                    }
+                } else {
+                    showBlogList();
+                }
+            });
+
+            // Check for hash on initial load
+            if (window.location.hash) {
+                const slug = window.location.hash.substring(1);
+                const postId = Object.keys(blogPosts).find(key => blogPosts[key].slug === slug);
+                if (postId) {
+                    showSinglePost(postId);
+                }
+            }
+
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

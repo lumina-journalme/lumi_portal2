@@ -3,9 +3,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   onJoinWaitlistClick?: () => void;
+  backgroundColor?: string;
 }
 
-export const Navbar = ({ onJoinWaitlistClick }: NavbarProps) => {
+export const Navbar = ({ onJoinWaitlistClick, backgroundColor }: NavbarProps) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ export const Navbar = ({ onJoinWaitlistClick }: NavbarProps) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full flex items-center px-4 py-4 sm:px-9 bg-[#0854e4] shadow-md z-50">
+    <header className={`fixed top-0 left-0 w-full flex items-center px-4 py-4 sm:px-9 shadow-md z-50 ${backgroundColor ? backgroundColor : 'bg-[#0854e4]'}`}>
       <div className="flex items-center justify-between w-full">
         <Link to="/" className="flex items-center gap-2" onClick={handleHomeClick}>
           <img
@@ -31,7 +32,7 @@ export const Navbar = ({ onJoinWaitlistClick }: NavbarProps) => {
         <div className="flex items-center gap-4">
           <Link
             to="/blog"
-            className="px-4 py-2 text-white rounded-lg font-semibold text-base transition-all hover:underline"
+            className={`px-4 py-2 rounded-lg font-semibold text-base transition-all hover:underline ${backgroundColor ? 'text-[#6EC7FF]' : 'text-white'}`}
           >
             Blog
           </Link>
@@ -47,4 +48,4 @@ export const Navbar = ({ onJoinWaitlistClick }: NavbarProps) => {
       </div>
     </header>
   );
-}; 
+};

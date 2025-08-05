@@ -273,7 +273,7 @@ export const Frame = (): JSX.Element => {
 
   return (
     <>
-      <Navbar onJoinWaitlistClick={() => setIsDialogOpen(true)} />
+      <Navbar onJoinWaitlistClick={() => setIsDialogOpen(true)} backgroundColor="bg-white" />
       <div className="flex flex-col items-start relative bg-[#0854e4] overflow-x-hidden w-full">
         <div className="h-[72px] w-full"></div>
 

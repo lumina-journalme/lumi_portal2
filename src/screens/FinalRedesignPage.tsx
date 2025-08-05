@@ -19,7 +19,7 @@ const FinalRedesignNavbar = ({ onJoinWaitlistClick, scrolled }: { onJoinWaitlist
       <Link to="/" className="flex items-center gap-2">
         <img
           className="w-24 h-8 sm:w-32 sm:h-10 object-contain"
-          alt="Lumi"
+          alt="Yunni"
           src="https://assets.lumime.ai/primary_icon_1.png"
           style={{ filter: scrolled ? 'none' : 'drop-shadow(0 0 2px #fff)' }}
         />
@@ -30,6 +30,12 @@ const FinalRedesignNavbar = ({ onJoinWaitlistClick, scrolled }: { onJoinWaitlist
           className={`px-4 py-2 rounded-lg font-semibold text-base transition-all hover:underline ${scrolled ? 'text-[#6EC7FF]' : 'text-white'}`}
         >
           Blog
+        </Link>
+        <Link
+          to="https://www.lumime.ai/"
+          className={`px-4 py-2 rounded-lg font-semibold text-base transition-all hover:underline border bg-white ${scrolled ? 'text-[#6EC7FF] border-[#6EC7FF]' : 'text-black border-white'}`}
+        >
+          Talk to Yunni Now
         </Link>
         {/* 这里可以加按钮，比如 Join Waitlist，如果需要的话 */}
       </div>
@@ -45,26 +51,11 @@ const rotatingStyle = `
 }
 `;
 
-const rightCards = [
-  {
-    title: 'Every Restless Night',
-    desc: 'Your thoughts are deeply personal. Lumi is built with privacy at its core, and we truly prioritize that your thoughts and data remain secure and private, so everything you share remains yours and yours alone.',
-  },
-  {
-    title: 'Every New Day',
-    desc: 'A new day brings new thoughts. Lumi helps you capture and reflect on them, so you can grow and understand yourself better.',
-  },
-  {
-    title: 'Every Small Victory',
-    desc: 'Celebrate your progress, no matter how small. Lumi is here to remind you of your journey and achievements.',
-  },
-];
+
 
 const FinalRedesignPage: React.FC = () => {
   const location = useLocation();
   const featuresRef = useRef<HTMLDivElement>(null);
-  const section3Ref = useRef<HTMLDivElement>(null);
-  const [showRightCards, setShowRightCards] = useState(false);
   // Preset eye positions: left-up, center, right-up, left-up, left-down
   const eyePositions = [
     { x: -12, y: -10 }, // left-up
@@ -118,20 +109,6 @@ const FinalRedesignPage: React.FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (location.pathname !== '/final-redesign') return;
-    const ref = section3Ref.current;
-    if (!ref) return;
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        setShowRightCards(entry.intersectionRatio >= 0.93);
-      },
-      { threshold: Array.from({length: 101}, (_, i) => i / 100), rootMargin: '0px' }
-    );
-    observer.observe(ref);
-    return () => observer.disconnect();
-  }, [location.pathname]);
-
   const [flipped, setFlipped] = React.useState([false, false, false, false, false]);
   const [activeFlipped, setActiveFlipped] = React.useState(-1);
 
@@ -171,7 +148,7 @@ const FinalRedesignPage: React.FC = () => {
           {/* Rotating Circles */}
           <div
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
-            style={{ zIndex: 1, width: 'min(90vw, 600px)', height: 'min(90vw, 600px)' }}
+            style={{ zIndex: 1, width: '100%', maxWidth: '600px', height: '100%', maxHeight: '600px' }}
           >
             <svg
               width="100%"
@@ -191,9 +168,9 @@ const FinalRedesignPage: React.FC = () => {
           {/* Center Cloud */}
           <div
             className="relative flex items-center justify-center"
-            style={{ zIndex: 2, width: 'min(80vw, 340px)', height: 'min(70vw, 320px)' }}
+style={{ zIndex: 2, width: '100%', maxWidth: '340px', height: 'auto', aspectRatio: '340/320' }}
           >
-            {/* Idea Star ("有idea了") */}
+              {/* Idea Star ("有idea了") */}
             <div
               style={{
                 position: 'absolute',
@@ -253,8 +230,8 @@ const FinalRedesignPage: React.FC = () => {
           />
         </div>
         {/* Clouds at the bottom of the hero section only */}
-        <div className="absolute left-0 bottom-0 w-full pointer-events-none select-none" style={{zIndex: 2, bottom: '-200px'}}>
-          <svg width="100vw" height="auto" viewBox="0 0 2400 1400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+        <div className="absolute left-0 bottom-0 w-full pointer-events-none select-none" style={{zIndex: 2, bottom: '0'}}>
+          <svg width="100%" height="auto" viewBox="0 0 2400 1400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto object-contain">
             {/* Additional clouds (now at the very bottom) */}
             <circle cx="260.41" cy="260.41" r="260.41" transform="matrix(-0.988108 0.153763 0.153763 0.988108 341.057 663.8889)" fill="#F3F0EB"/>
             <circle cx="409.763" cy="409.763" r="409.763" transform="matrix(-0.988108 0.153763 0.153763 0.988108 734.116 995.944)" fill="#F3F0EB"/>
@@ -403,74 +380,8 @@ const FinalRedesignPage: React.FC = () => {
             </svg>
           </div>
         </div>
-        {/* 右侧堆叠卡片区，fixed到屏幕最右侧，只在features section进入视口时显示 */}
-        {location.pathname === '/final-redesign' && (
-          <div style={{
-            position: 'fixed',
-            right: -40,
-            top: 120,
-            zIndex: 20,
-            width: 600,
-            height: 800,
-            pointerEvents: 'none',
-            opacity: showRightCards ? 1 : 0,
-            transition: 'opacity 0.4s cubic-bezier(.4,2,.6,1)'
-          }}>
-            {rightCards.slice(1).map((card, idx) => {
-              const left = idx === 1 ? -70 : -40 + idx * 20;
-              const top = idx === 1 ? -50 : -30 + idx * 15;
-              return (
-                <div
-                  key={card.title}
-                  className="bg-white rounded-2xl border border-[#E3E3E3] px-8 py-7 flex flex-col absolute"
-                  style={{
-                    width: 600,
-                    height: 800,
-                    left,
-                    top,
-                    transform: `rotate(${-15 * (idx + 1)}deg)` ,
-                    zIndex: 2 - idx,
-                    boxShadow: 'none',
-                    opacity: 1,
-                    pointerEvents: 'auto',
-                  }}
-                >
-                  <div className="text-2xl font-bold text-gray-900 mb-2" style={{fontFamily: 'Montserrat'}}>{card.title}</div>
-                  <div className="text-base text-gray-700 mb-6" style={{fontFamily: 'Montserrat'}}>{card.desc}</div>
-                  {/* 这里可以放CardSkeleton或其它内容 */}
-                </div>
-              );
-            })}
-            {/* 主卡片 */}
-            <div
-              className="bg-white rounded-2xl border border-[#E3E3E3] px-8 py-7 flex flex-col absolute"
-              style={{
-                width: 600,
-                height: 800,
-                left: 0,
-                top: 0,
-                transform: 'rotate(0deg)',
-                zIndex: 10,
-                boxShadow: 'none',
-                opacity: 1,
-                pointerEvents: 'auto',
-              }}
-            >
-              <div className="text-2xl font-bold text-gray-900 mb-2" style={{fontFamily: 'Montserrat'}}>{rightCards[0].title}</div>
-              <div className="text-base text-gray-700 mb-6" style={{fontFamily: 'Montserrat'}}>{rightCards[0].desc}</div>
-              {/* 这里可以放CardSkeleton或其它内容 */}
-            </div>
-          </div>
-        )}
+
       </section>
-      {/* Section3 区域加ref用于卡片堆叠显示判断 */}
-      <div ref={section3Ref} className="min-h-screen" style={{ background: '#FAF7F2' }}>
-        <div
-          className={showRightCards ? 'animate-fadeInUp' : 'animate-fadeOutDown'}
-        >
-          <Section3 />
-        </div>
-      </div>
       <EmotionalTrendsSection />
       {/* 蓝色背景+底部白云的新section */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center bg-[#6EC7FF] overflow-hidden">
@@ -558,11 +469,6 @@ const FinalRedesignPage: React.FC = () => {
     </div>
   );
 };
-
-// Section 3: A Whisper from Your Past (The Constellation)
-function Section3() {
-  return <FloatingCloudVoicesPage />;
-}
 
 function EmotionalTrendsSection() {
   const [flipped, setFlipped] = React.useState([false, false, false, false, false]);
@@ -682,4 +588,4 @@ function EmotionalTrendsSection() {
   );
 }
 
-export { FinalRedesignPage }; 
+export { FinalRedesignPage };

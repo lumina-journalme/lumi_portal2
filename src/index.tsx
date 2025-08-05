@@ -10,6 +10,7 @@ import { SimpleRedesignPage } from "./screens/SimpleRedesignPage";
 import { ManusRedesignPage } from "./screens/ManusRedesignPage";
 import { FinalRedesignPage } from "./screens/FinalRedesignPage";
 import FloatingCloudVoicesPage from "./screens/FloatingCloudVoicesPage";
+import { AugRedesignPage } from "./screens/AugRedesignPage";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById("app") as HTMLElement).render(
         <Route path="/blog" element={<BlogListPage />} />
         <Route path="/blog/:slug" element={<BlogDetailPage />} />
         <Route path="/cloud-voices" element={<FloatingCloudVoicesPage />} />
+        <Route path="/aug-redesign" element={<AugRedesignPage />} />
       </Routes>
     </Router>
   </StrictMode>,

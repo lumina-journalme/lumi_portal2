@@ -1,8 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Mousewheel } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
 
 // 英文卡片数据，去掉图片
 const cards = [
