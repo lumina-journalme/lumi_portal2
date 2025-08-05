@@ -1,0 +1,14 @@
+{
+  "name": "lumi-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Yunni - Your personal thought journal",
+  "scripts": {
+    "build": "echo 'No build step needed for static site' && exit 0",
+    "test": "echo 'No tests specified' && exit 0"
+  },
+  "dependencies": {
+    "vite": "^5.0.0"
+  },
+  "type": "module"
+}
