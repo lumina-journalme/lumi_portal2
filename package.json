@@ -4,7 +4,9 @@
   "private": true,
   "description": "Yunni - Your personal thought journal",
   "scripts": {
-    "build": "echo 'No build step needed for static site' && exit 0",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "echo 'No tests specified' && exit 0"
   },
   "dependencies": {

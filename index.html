@@ -23,6 +23,7 @@
             background-color: #F3F0EB; /* Base off-white color */
             color: #1e293b; /* slate-800 for main text */
             overflow-x: hidden;
+            scroll-behavior: smooth; /* Enable smooth scrolling for anchor links */
         }
 
         .hero-gradient {
@@ -100,10 +101,6 @@
             transition: transform 0.4s ease, opacity 0.4s ease;
             perspective: 1200px;
         }
-        #feature-card-wrapper.is-focused .feature-arc-container:not(.is-active) {
-            opacity: 0.6;
-            filter: blur(2px);
-        }
         .feature-card {
             width: 100%;
             height: 100%;
@@ -151,7 +148,7 @@
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#use-cases" class="text-slate-700 hover:text-slate-900 transition">Use Cases</a>
                 <a href="#how-it-works" class="text-slate-700 hover:text-slate-900 transition">How It Works</a>
-                <a href="/blog" class="text-slate-700 hover:text-slate-900 transition">Blog</a>
+                <a href="blog/index.html" class="text-slate-700 hover:text-slate-900 transition">Blog</a>
             </nav>
             <a href="#" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-700 transition">Talk to Yunni Now</a>
         </div>
@@ -247,28 +244,28 @@
                 </div>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                      <article>
-                        <a href="/blog/#post1" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/dbeafe/1e3a8a?text=Yunni+Insights" alt="AI Insights" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                        <a href="blog/index.html#your-brain-is-a-terrible-office-how-to-stop-overthinking-everything" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/93c5fd/1e40af?text=Overthinking" alt="An abstract brain illustration representing the concept of how to stop overthinking" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
                             <div>
-                                <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Research</p>
-                                <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-blue-800 transition-colors">The Power of Vocal Journaling</h3>
-                                <p class="text-slate-600 text-sm">By The Yunni Team &middot; August 3, 2025</p>
+                                <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Wellness Tips</p>
+                                <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-blue-800 transition-colors">Your Brain Is a Terrible Office: How to Stop Overthinking Everything</h3>
+                                <p class="text-slate-600 text-sm">By the Yunni Team &middot; August 4, 2025</p>
                             </div>
                         </a>
                     </article>
                     <article>
-                        <a href="/blog/#post2" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/e0f2fe/0891b2?text=Wellness" alt="Wellness" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                        <a href="blog/index.html#the-science-of-journaling" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/e0f2fe/0891b2?text=Journaling" alt="An illustration of a brain with glowing connections, representing journaling for mental health" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
                             <div>
-                                <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Wellness</p>
-                                <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-sky-800 transition-colors">How Self-Reflection Improves Mental Clarity</h3>
+                                <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Research</p>
+                                <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-sky-800 transition-colors">The Science of Journaling: How Writing Affects Your Brain</h3>
                                 <p class="text-slate-600 text-sm">By Dr. Alva &middot; July 28, 2025</p>
                             </div>
                         </a>
                     </article>
                     <article>
-                        <a href="/blog/#post3" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/fee2e2/991b1b?text=Tech" alt="Technology" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                        <a href="blog/index.html#ai-empathy-engine" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/1200x800/fee2e2/991b1b?text=AI+Empathy" alt="Abstract network representing AI empathy and emotion recognition" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
                             <div>
                                 <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Technology</p>
                                 <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-red-800 transition-colors">The AI Behind Yunni's Empathy Engine</h3>
@@ -278,7 +275,7 @@
                     </article>
                 </div>
                  <div class="text-center mt-12">
-                    <a href="/blog/" class="cta-button inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg text-base shadow-lg hover:bg-blue-500">View All Posts</a>
+                    <a href="blog/index.html" class="cta-button inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg text-base shadow-lg hover:bg-blue-500">View All Posts</a>
                 </div>
             </div>
         </section>

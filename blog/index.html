@@ -25,12 +25,6 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #FAF7F2;
             color: #1e293b;
-            padding-top: 5rem; /* Account for fixed header */
-        }
-        
-        /* Ensure main content starts below the fixed header */
-        main {
-            min-height: calc(100vh - 5rem);
         }
         /* --- Blog Article Styles --- */
         .prose-styles h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
@@ -46,75 +40,75 @@
     <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md border-b border-white/20">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="text-xl font-bold tracking-wider text-slate-800">Yunni</a>
+            <a href="../index.html" class="text-xl font-bold tracking-wider text-slate-800">Yunni</a>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="/#use-cases" class="text-slate-700 hover:text-slate-900 transition">Use Cases</a>
-                <a href="/#how-it-works" class="text-slate-700 hover:text-slate-900 transition">How It Works</a>
-                <a href="/blog" class="text-slate-700 hover:text-slate-900 transition">Blog</a>
+                <a href="../index.html#use-cases" class="text-slate-700 hover:text-slate-900 transition">Use Cases</a>
+                <a href="../index.html#how-it-works" class="text-slate-700 hover:text-slate-900 transition">How It Works</a>
+                <a href="index.html" class="text-slate-700 hover:text-slate-900 transition">Blog</a>
             </nav>
             <a href="#" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-700 transition">Talk to Yunni Now</a>
         </div>
     </header>
 
-  <!-- Blog Content Wrapper -->
-  <div class="min-h-screen flex flex-col">
-    <main id="blog-main-container" class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
-        <!-- Blog List Page -->
-        <div id="blog-list-page">
-            <div class="text-center mb-16">
-                <h1 class="text-5xl font-extrabold text-slate-800">Blog</h1>
-                <p class="mt-4 text-slate-600">Thoughts, stories, and updates from the Yunni team.</p>
-            </div>
-            <!-- Container for dynamically generated blog posts -->
-            <div id="blog-posts-container">
-                <!-- Blog posts will be inserted here by JavaScript -->
-            </div>
-        </div>
-        <!-- Single Post Page (template) -->
-        <div id="single-post-container" class="hidden"></div>
-    </main>
-    <footer class="border-t border-slate-200 bg-white mt-auto">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
-                <div>
-                    <h3 class="text-lg font-bold text-slate-800">Yunni</h3>
-                    <p class="text-slate-600 mt-2 text-sm">The Journal That Listens.</p>
+    <!-- Blog Content Wrapper -->
+    <div class="min-h-screen flex flex-col">
+        <main id="blog-main-container" class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+            <!-- Blog List Page -->
+            <div id="blog-list-page">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-extrabold text-slate-800">Blog</h1>
+                    <p class="mt-4 text-slate-600">Thoughts, stories, and updates from the Yunni team.</p>
                 </div>
-                <div>
-                    <h4 class="font-semibold text-slate-700">Connect</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="https://chat.whatsapp.com/E3rlNtn0hZT1Mch5Sw8v7J?mode=ac_t" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-700">Join Our WhatsApp Group</a></li>
-                    </ul>
-                </div>
-                 <div>
-                    <h4 class="font-semibold text-slate-700">Legal</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="https://lumime.ai/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-700">Privacy Policy</a></li>
-                        <li><a href="https://lumime.ai/terms-of-service" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-700">Terms of Service</a></li>
-                    </ul>
+                <!-- Container for dynamically generated blog posts -->
+                <div id="blog-posts-container">
+                    <!-- Blog posts will be inserted here by JavaScript -->
                 </div>
             </div>
-            <div class="mt-12 border-t border-slate-200 pt-8 text-center text-slate-500 text-sm">
-                <p>&copy; 2025 Yunni. All rights reserved.</p>
+            <!-- Single Post Page (template) -->
+            <div id="single-post-container" class="hidden"></div>
+        </main>
+        <footer class="border-t border-slate-200 bg-white mt-auto">
+            <div class="container mx-auto px-6 py-12">
+                <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-800">Yunni</h3>
+                        <p class="text-slate-600 mt-2 text-sm">The Journal That Listens.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-slate-700">Connect</h4>
+                        <ul class="mt-4 space-y-2 text-sm">
+                            <li><a href="https://chat.whatsapp.com/E3rlNtn0hZT1Mch5Sw8v7J?mode=ac_t" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-700">Join Our WhatsApp Group</a></li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h4 class="font-semibold text-slate-700">Legal</h4>
+                        <ul class="mt-4 space-y-2 text-sm">
+                            <li><a href="https://lumime.ai/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-700">Privacy Policy</a></li>
+                            <li><a href="https://lumime.ai/terms-of-service" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-blue-700">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-12 border-t border-slate-200 pt-8 text-center text-slate-500 text-sm">
+                    <p>&copy; 2025 Yunni. All rights reserved.</p>
+                </div>
             </div>
-        </div>
-    </footer>
-</div>
+        </footer>
+    </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- Blog Posts Data (Single Source of Truth) ---
-        const blogPosts = {
-            'post1': {
-                slug: 'your-brain-is-a-terrible-office-how-to-stop-overthinking-everything',
-                title: 'Your Brain Is a Terrible Office: How to Stop Overthinking Everything',
-                metaDescription: 'Feeling stuck in a loop of worry? Learn how to stop overthinking everything with a simple but powerful technique: externalization. This guide explains why trying to \'think\' your way out of anxiety doesn\'t work and offers a better way to find mental clarity.',
-                category: 'Wellness Tips',
-                meta: 'By the Yunni Team &middot; August 4, 2025',
-                excerpt: 'Discover why your brain is a terrible office for problem-solving and learn how to stop overthinking everything with a simple but powerful technique.',
-                image: 'https://placehold.co/1200x800/93c5fd/1e40af?text=Overthinking',
-                imageAlt: 'An abstract brain illustration representing the concept of how to stop overthinking',
-                content: `
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Blog Posts Data (Single Source of Truth) ---
+            const blogPosts = {
+                'post1': {
+                    slug: 'your-brain-is-a-terrible-office-how-to-stop-overthinking-everything',
+                    title: 'Your Brain Is a Terrible Office: How to Stop Overthinking Everything',
+                    metaDescription: 'Feeling stuck in a loop of worry? Learn how to stop overthinking everything with a simple but powerful technique: externalization. This guide explains why trying to \'think\' your way out of anxiety doesn\'t work and offers a better way to find mental clarity.',
+                    category: 'Wellness Tips',
+                    meta: 'By the Yunni Team &middot; August 4, 2025',
+                    excerpt: 'Discover why your brain is a terrible office for problem-solving and learn how to stop overthinking everything with a simple but powerful technique.',
+                    image: 'https://placehold.co/1200x800/93c5fd/1e40af?text=Overthinking',
+                    imageAlt: 'An abstract brain illustration representing the concept of how to stop overthinking',
+                    content: `
 ## Your Brain Is a Terrible Office
 
 It’s 2 AM. The world is quiet, but your mind is screaming. You’re replaying a conversation from Tuesday, drafting an email you need to send tomorrow, and simultaneously worrying about a hypothetical problem that might come up next month. Each thought is a frantic intern, running around in the cramped, messy office of your brain, shouting for your attention. No real work is getting done, but everyone is completely exhausted.
@@ -138,87 +132,35 @@ Hearing the words spoken out loud, she said it was like they instantly lost 90% 
 ### Putting It Into Practice Tonight with Yunni
 
 You don’t need a complicated system. You just need a place that’s private, secure, and always there. A soundproof room for your mind. This is exactly why we built **Yunni**.
-                `
-            },
-            'post2': {
-        slug: 'how-to-remember-happy-moments',
-        title: 'Stop Documenting Your Life. Start Archiving Your Feelings.',
-        metaDescription: 'Your camera roll is full of photos, but do you remember how you truly felt? Discover how to remember happy moments with more vividness and emotion by creating an \'emotional archive\' with your voice. Build resilience and joy.',
-        category: 'Wellness Tips',
-        meta: 'The Yunni Team & Aug 5th 2025',
-        image: 'https://placehold.co/1200x800/antiquewhite/orange?text=Feelings',
-        imageAlt: 'feelings',
-        content: `
-Scroll through your phone’s camera roll.
+                    `
+                },
+                'post2': {
+                    slug: 'the-science-of-journaling',
+                    title: 'The Science of Journaling: How Writing Affects Your Brain',
+                    metaDescription: 'Discover the psychological benefits of journaling and how the simple act of writing can rewire your brain for better mental health and clarity.',
+                    category: 'Research',
+                    meta: 'By Dr. Alva &middot; July 28, 2025',
+                    excerpt: 'Explore the neuroscience behind journaling and how this simple practice can help rewire your brain for better mental health and clarity.',
+                    image: 'https://placehold.co/800x600/e0f2fe/0891b2?text=Journaling',
+                    imageAlt: 'An illustration of a brain with glowing connections, representing journaling for mental health',
+                    content: `
+## Creating Space in a Crowded Mind
 
-What do you see? Thousands of images. The birthday party from last year, that vacation from 2023, a particularly good-looking brunch. You have a perfect, high-resolution record of *what happened*.
+In a world of constant notifications and external pressures, the internal landscape of our minds can often feel chaotic. Self-reflection is the practice of intentionally creating space to observe our thoughts and feelings without judgment.
 
-But close your eyes and try to remember how you *felt*.
-
-Can you still feel the warmth of the sun on your skin during that vacation? Can you hear the exact sound of your friends laughing at that birthday party? Can you recall that specific feeling of contentment from that perfect brunch?
-
-Often, the answer is... not really. The photo is a flat, silent artifact. The feeling, the most vital part of the memory, has faded. We’ve all become expert documentarians of our lives, but terrible archivists of our joy.
-
-What if you could save the feeling itself?
-
-## The "Happiness Hangover": Why Good Moments Fade So Fast
-
-There's a reason for this emotional fading. Our brains are hardwired with something called a "negativity bias." For thousands of years, survival depended on remembering threats—the dangerous animal, the poisonous berry, the social rejection. As a result, our minds are like Velcro for bad experiences and Teflon for good ones.
-
-A criticism can stick with us for days, while a compliment often slides right off. A moment of intense joy or peace—that "happiness hangover" we feel after a great day—can feel incredibly fleeting. We want to bottle it, but it seems to slip through our fingers.
-
-But what if we could change that?
-
-### Meet "Positive Neuroplasticity"
-
-The good news is, our brains can be rewired. Neuroscientists call this "neuroplasticity." **Positive Neuroplasticity**, a term coined by Dr. Rick Hanson, is the idea that by consciously focusing on and savoring positive experiences, we can literally strengthen the neural pathways for happiness.
-
-The more you "install" these good moments into your brain, the more your brain learns to recognize and prioritize them in the future. You're not just remembering a good feeling; you're training your brain to be more resilient and joyful by default. The key isn't just to *have* good experiences, but to actively *internalize* them.
-
-**(Suggested Image: A clean screenshot of the Yunni app interface, but showing a list of entries with positive titles like "Perfect Sunny Afternoon," "That Song on the Radio," "Laughing with Mom," each with a happy emoji.)**
-**Image Alt Text:** \`The Yunni voice journaling app being used to create an archive of happy feelings and positive memories.\`
-
-## How to Archive a Feeling: A 60-Second Practice
-
-This is where we move beyond just taking a picture. A photo captures light, but your voice captures emotion. Here is a simple, 60-second habit to start archiving your feelings.
-
-A friend of mine, a new mom, was feeling overwhelmed by the stress and sleep deprivation. She felt like she was losing herself in the chaos. I suggested she try this. A few days later, during a rare, quiet moment, her baby let out a full, deep belly laugh for the first time.
-
-Instead of just grabbing her phone to take a video, she opened Yunni and pressed record.
-
-In a hushed, smiling voice, she whispered, “He just did it. His first real laugh. It was so pure. It sounds silly, but in that second, all the stress just… disappeared. I feel so warm and full. I just want to remember this feeling forever.”
-
-Months later, on a particularly tough day, she stumbled upon that entry. She pressed play. Hearing the genuine, unscripted joy in her own voice instantly transported her back. It wasn't just a memory; it was a dose of pure, undiluted happiness, administered by her past self. It was the proof she needed that those moments were real and that they would come again.
-
-## Yunni: Your Personal Time Capsule of Joy
-
-This is why we believe so strongly in the power of voice. It's the most direct channel to your emotional state.
-
-**Yunni** is designed to be your personal time capsule. It’s a tool to help you practice Positive Neuroplasticity in the easiest way possible.
-
-* **It’s Immediate:** When a good moment happens, you don't have to stop and find the right words to write. You just speak. The barrier to entry is almost zero.
-* **It’s Emotionally Rich:** The tone, the pace, the laughter, the quiet awe in your voice—all of that is captured, creating a memory far more vivid than text on a page.
-* **It’s for You:** Unlike a photo gallery curated for social media, this archive is 100% for your own well-being. It’s a private library of your best moments, ready whenever you need them.
-
-## Don't Just Look Back. Feel Back.
-
-Your life isn't a performance to be documented. It’s a collection of feelings to be experienced.
-
-Start today. The next time you feel a moment of simple, genuine happiness—a warm breeze, a great song, a kind word—take 60 seconds. Open Yunni. And tell your future self how it felt.
-
-You’ll be giving them a gift more precious than any photograph.
-        `
-    },
-            'post3': {
-                slug: 'ai-empathy-engine',
-                title: "The AI Behind Yunni's Empathy Engine",
-                metaDescription: "A deep dive into the technology that powers Yunni's ability to understand and respond to human emotions with genuine empathy and care.",
-                category: 'Technology',
-                meta: 'By The Engineering Team &middot; July 22, 2025',
-                excerpt: 'Discover how our AI creates meaningful connections through advanced natural language processing and emotional intelligence.',
-                image: 'https://placehold.co/1200x800/fee2e2/991b1b?text=AI+Empathy',
-                imageAlt: 'Abstract network representing AI empathy and emotion recognition',
-                content: `
+This isn't about finding answers, but about understanding the questions. By regularly checking in with yourself, you begin to notice patterns you were previously unaware of. This awareness is the first step toward breaking negative cycles and fostering a sense of inner peace.
+                    `
+                },
+                'post3': {
+                    slug: 'ai-empathy-engine',
+                    title: "The AI Behind Yunni's Empathy Engine",
+                    metaDescription: "A deep dive into the technology that powers Yunni's ability to understand and respond to human emotions with genuine empathy and care.",
+                    category: 'Technology',
+                    meta: 'By The Engineering Team &middot; July 22, 2025',
+                    excerpt: 'Discover how our AI creates meaningful connections through advanced natural language processing and emotional intelligence.',
+                    image: 'https://placehold.co/1200x800/fee2e2/991b1b?text=AI+Empathy',
+                    imageAlt: 'Abstract network representing AI empathy and emotion recognition',
+                    content: `
 ## More Than Just Transcription
 
 At the heart of Yunni is a sophisticated AI model designed for one purpose: to listen. While accurate transcription is the foundation, our true innovation lies in what comes next. The AI analyzes the sentiment, tone, and key themes in your voice entries, not to judge, but to reflect.
@@ -226,18 +168,18 @@ At the heart of Yunni is a sophisticated AI model designed for one purpose: to l
 > Our goal was to build an AI that acts less like a machine and more like a compassionate, non-judgmental mirror.
 
 It identifies recurring topics like 'work stress' or 'relationship joy' and tracks emotional trends over time. This allows Yunni to offer gentle prompts and insights that are uniquely tailored to your personal journey, helping you connect the dots in your own life story.
-                `
-            },
-            'post4': {
-                slug: 'user-stories-community',
-                title: 'User Stories: Finding Your Voice with Yunni',
-                metaDescription: 'Real stories from Yunni users about how the platform has helped them find their voice, process their thoughts, and improve their mental well-being.',
-                category: 'Community',
-                meta: 'By Sarah Green &middot; July 15, 2025',
-                excerpt: 'Hear from real Yunni users about their journeys to better mental clarity and self-expression through daily journaling.',
-                image: 'https://placehold.co/1200x800/dcfce7/14532d?text=Community',
-                imageAlt: 'Illustration of diverse people connecting, representing community and user stories',
-                content: `
+                    `
+                },
+                'post4': {
+                    slug: 'user-stories-community',
+                    title: 'User Stories: Finding Your Voice with Yunni',
+                    metaDescription: 'Real stories from Yunni users about how the platform has helped them find their voice, process their thoughts, and improve their mental well-being.',
+                    category: 'Community',
+                    meta: 'By Sarah Green &middot; July 15, 2025',
+                    excerpt: 'Hear from real Yunni users about their journeys to better mental clarity and self-expression through daily journaling.',
+                    image: 'https://placehold.co/1200x800/dcfce7/14532d?text=Community',
+                    imageAlt: 'Illustration of diverse people connecting, representing community and user stories',
+                    content: `
 ## Real Journeys, Real Words
 
 We are constantly humbled and inspired by the stories our community shares. From a user who finally articulated a career change after months of indecision, to another who found solace in expressing grief they couldn't share with anyone else, the power of a private, listening ear is profound.
@@ -245,18 +187,18 @@ We are constantly humbled and inspired by the stories our community shares. From
 > "I said things to Yunni I've never said out loud before. Just hearing them in the air made me realize what I needed to do." - Alex M.
 
 These stories are the reason we built Yunni. They remind us that sometimes, the most important conversation you can have is with yourself.
-            `
-        },
-        'post5': {
-            slug: 'new-feature-dream-analysis',
-            title: 'New Feature: Dream Analysis with Yunni',
-            metaDescription: 'Introducing our latest feature: Dream Analysis. Now you can record and analyze your dreams to uncover patterns and gain deeper self-awareness.',
-            category: 'Product',
-            meta: 'By The Product Team &middot; July 10, 2025',
-            excerpt: 'Explore our new Dream Analysis feature that helps you understand your subconscious mind and track patterns in your dreams over time.',
-            image: 'https://placehold.co/1200x800/f3e8ff/581c87?text=Dream+Analysis',
-            imageAlt: 'A surreal, dream-like landscape representing the dream analysis feature',
-            content: `
+                `
+            },
+            'post5': {
+                slug: 'new-feature-dream-analysis',
+                title: 'New Feature: Dream Analysis with Yunni',
+                metaDescription: 'Introducing our latest feature: Dream Analysis. Now you can record and analyze your dreams to uncover patterns and gain deeper self-awareness.',
+                category: 'Product',
+                meta: 'By The Product Team &middot; July 10, 2025',
+                excerpt: 'Explore our new Dream Analysis feature that helps you understand your subconscious mind and track patterns in your dreams over time.',
+                image: 'https://placehold.co/1200x800/f3e8ff/581c87?text=Dream+Analysis',
+                imageAlt: 'A surreal, dream-like landscape representing the dream analysis feature',
+                content: `
 ## Unlocking Your Subconscious
 
 We're thrilled to announce a new experimental feature for Yunni: Dream Journaling. Now, you can wake up and immediately record the fleeting details of your dreams. Yunni's AI will then help identify recurring symbols, themes, and emotions from your subconscious mind.
@@ -264,18 +206,18 @@ We're thrilled to announce a new experimental feature for Yunni: Dream Journalin
 ![Abstract image representing dreams and the subconscious.](https://placehold.co/800x400/e0e7ff/4338ca?text=Dreamscape)
 
 This feature is designed to be a playful yet insightful way to explore the hidden corners of your mind. What stories are your dreams trying to tell you? Start recording them today to find out.
-                `
-            },
-            'post6': {
-                slug: 'mindfulness-prompts',
-                title: '5-Minute Mindfulness: Quick Exercises for Busy People',
-                metaDescription: 'Short, effective mindfulness exercises you can do anywhere, anytime. Perfect for when you only have a few minutes to reset and refocus.',
-                category: 'Mindfulness',
-                meta: 'By Jane Doe &middot; July 5, 2025',
-                excerpt: 'Discover quick and effective mindfulness exercises that fit into even the busiest schedule, helping you find calm and focus throughout your day.',
-                image: 'https://placehold.co/1200x800/fefce8/a16207?text=Mindfulness',
-                imageAlt: 'A calm and serene image representing mindfulness exercises',
-                content: `
+                    `
+                },
+                'post6': {
+                    slug: 'mindfulness-prompts',
+                    title: '5-Minute Mindfulness: Quick Exercises for Busy People',
+                    metaDescription: 'Short, effective mindfulness exercises you can do anywhere, anytime. Perfect for when you only have a few minutes to reset and refocus.',
+                    category: 'Mindfulness',
+                    meta: 'By Jane Doe &middot; July 5, 2025',
+                    excerpt: 'Discover quick and effective mindfulness exercises that fit into even the busiest schedule, helping you find calm and focus throughout your day.',
+                    image: 'https://placehold.co/1200x800/fefce8/a16207?text=Mindfulness',
+                    imageAlt: 'A calm and serene image representing mindfulness exercises',
+                    content: `
 ## Breaking the Blank Page Barrier
 
 Staring at a blank page (or a silent app) can be intimidating. If you're not sure where to start, here are five simple prompts to get your thoughts flowing:
@@ -287,188 +229,184 @@ Staring at a blank page (or a silent app) can be intimidating. If you're not sur
 * 5. What is one thing I can do tomorrow to be kinder to myself?
 
 Remember, there are no right or wrong answers. Just speak.
-                `
+                    `
+                }
+            };
+
+            // --- Function to render blog posts dynamically ---
+            function renderBlogPosts() {
+                const container = document.getElementById('blog-posts-container');
+                if (!container) return;
+
+                const sortedPosts = Object.entries(blogPosts).sort((a, b) => {
+                    const dateA = new Date(a[1].meta.split('·')[1]?.trim() || 0);
+                    const dateB = new Date(b[1].meta.split('·')[1]?.trim() || 0);
+                    return dateB - dateA;
+                });
+
+                const featuredPostId = sortedPosts[0][0];
+                const featuredPost = sortedPosts[0][1];
+                
+                let html = `
+                <section class="mb-12 md:mb-16">
+                    <a href="#${featuredPost.slug}" class="blog-post-link block group" data-postid="${featuredPostId}">
+                        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                            <div class="overflow-hidden rounded-lg"><img src="${featuredPost.image}" alt="${featuredPost.imageAlt}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                            <div>
+                                <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">${featuredPost.category}</p>
+                                <h2 class="text-2xl sm:text-3xl font-bold mb-3 text-slate-800 group-hover:text-blue-800 transition-colors">${featuredPost.title}</h2>
+                                <p class="text-gray-500 text-sm">${featuredPost.meta}</p>
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <section>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                `;
+
+                sortedPosts.slice(1).forEach(([id, post]) => {
+                    html += `
+                        <article>
+                            <a href="#${post.slug}" class="blog-post-link block group" data-postid="${id}">
+                                <div class="overflow-hidden rounded-lg mb-4"><img src="${post.image}" alt="${post.imageAlt}" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                                <div>
+                                    <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">${post.category}</p>
+                                    <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-blue-800 transition-colors">${post.title}</h3>
+                                    <p class="text-gray-500 text-sm">${post.meta}</p>
+                                </div>
+                            </a>
+                        </article>
+                    `;
+                });
+
+                html += `</div></section>`;
+                container.innerHTML = html;
             }
-        };
 
-        // --- Function to render blog posts dynamically ---
-        function renderBlogPosts() {
-            const container = document.getElementById('blog-posts-container');
-            if (!container) return;
+            // --- Blog Page Navigation and SEO Handling ---
+            const blogListPage = document.getElementById('blog-list-page');
+            const singlePostContainer = document.getElementById('single-post-container');
+            const defaultTitle = 'Blog | Yunni';
+            const defaultMetaDesc = 'Thoughts, stories, and updates from the Yunni team.';
 
-            // Sort posts by date (newest first)
-            const sortedPosts = Object.entries(blogPosts).sort((a, b) => {
-                const dateA = new Date(a[1].meta.split('·')[1]?.trim() || 0);
-                const dateB = new Date(b[1].meta.split('·')[1]?.trim() || 0);
-                return dateB - dateA;
-            });
+            function updateMeta(title, description) {
+                document.title = title;
+                let metaTag = document.querySelector('meta[name="description"]');
+                if (!metaTag) {
+                    metaTag = document.createElement('meta');
+                    metaTag.name = 'description';
+                    document.head.appendChild(metaTag);
+                }
+                metaTag.content = description;
+            }
 
-            const featuredPostId = sortedPosts[0][0];
-            const featuredPost = sortedPosts[0][1];
-            
-            let html = `
-            <section class="mb-12 md:mb-16">
-                <a href="#${featuredPost.slug}" class="blog-post-link block group" data-postid="${featuredPostId}">
-                    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                        <div class="overflow-hidden rounded-lg"><img src="${featuredPost.image}" alt="${featuredPost.imageAlt}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
-                        <div>
-                            <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">${featuredPost.category}</p>
-                            <h2 class="text-2xl sm:text-3xl font-bold mb-3 text-slate-800 group-hover:text-blue-800 transition-colors">${featuredPost.title}</h2>
-                            <p class="text-gray-500 text-sm">${featuredPost.meta}</p>
+            function showBlogList() {
+                const mainContainer = document.getElementById('blog-main-container');
+                if (mainContainer) mainContainer.classList.add('pt-24');
+
+                if(blogListPage) blogListPage.classList.remove('hidden');
+                if(singlePostContainer) singlePostContainer.classList.add('hidden');
+                updateMeta(defaultTitle, defaultMetaDesc);
+                history.pushState(null, '', window.location.pathname.split('#')[0]);
+                window.scrollTo(0, 0);
+            }
+
+            function showSinglePost(postId) {
+                const post = blogPosts[postId];
+                if (!post || !singlePostContainer || !blogListPage) return;
+
+                const mainContainer = document.getElementById('blog-main-container');
+                if (mainContainer) mainContainer.classList.remove('pt-24');
+
+                let contentWithImages = post.content;
+                if (post.images) {
+                    for (const placeholder in post.images) {
+                        const imageData = post.images[placeholder];
+                        const markdownImg = `![${imageData.alt}](${imageData.data})`; 
+                        contentWithImages = contentWithImages.replace(new RegExp(placeholder.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), markdownImg);
+                    }
+                }
+
+                const contentHtml = marked.parse(contentWithImages);
+
+                singlePostContainer.innerHTML = `
+                    <div class="max-w-3xl mx-auto pt-16">
+                        <a href="#" id="back-to-blog" class="inline-flex items-center text-slate-600 hover:text-blue-600 mb-8">
+                            <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                            Back to Blog
+                        </a>
+                        <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">${post.category}</p>
+                        <h1 class="text-4xl font-extrabold text-slate-800 mt-2 mb-4">${post.title}</h1>
+                        <p class="text-gray-500 text-sm mb-8">${post.meta}</p>
+                        <img src="${post.image}" alt="${post.imageAlt}" class="w-full h-auto rounded-lg mb-8">
+                        <div class="prose-styles text-slate-700">
+                            ${contentHtml}
                         </div>
                     </div>
-                </a>
-            </section>
-            <section>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            `;
-
-            sortedPosts.slice(1).forEach(([id, post]) => {
-                html += `
-                    <article>
-                        <a href="#${post.slug}" class="blog-post-link block group" data-postid="${id}">
-                            <div class="overflow-hidden rounded-lg mb-4"><img src="${post.image}" alt="${post.imageAlt}" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
-                            <div>
-                                <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">${post.category}</p>
-                                <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-blue-800 transition-colors">${post.title}</h3>
-                                <p class="text-gray-500 text-sm">${post.meta}</p>
-                            </div>
-                        </a>
-                    </article>
                 `;
-            });
+                lucide.createIcons();
+                
+                blogListPage.classList.add('hidden');
+                singlePostContainer.classList.remove('hidden');
+                
+                updateMeta(`${post.title} | Yunni`, post.metaDescription);
+                history.pushState({ postId: postId }, '', `#${post.slug}`);
 
-            html += `</div></section>`;
-            container.innerHTML = html;
-        }
+                window.scrollTo(0, 0);
 
-        // --- Blog Page Navigation and SEO Handling ---
-        const blogListPage = document.getElementById('blog-list-page');
-        const singlePostContainer = document.getElementById('single-post-container');
-        const defaultTitle = 'Blog | Yunni';
-        const defaultMetaDesc = 'Thoughts, stories, and updates from the Yunni team.';
-
-        function updateMeta(title, description) {
-            document.title = title;
-            let metaTag = document.querySelector('meta[name="description"]');
-            if (!metaTag) {
-                metaTag = document.createElement('meta');
-                metaTag.name = 'description';
-                document.head.appendChild(metaTag);
+                document.getElementById('back-to-blog').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showBlogList();
+                });
             }
-            metaTag.content = description;
-        }
 
-        function showBlogList() {
-            const mainContainer = document.getElementById('blog-main-container');
-            if (mainContainer) mainContainer.classList.add('pt-24');
+            // Initial render of blog posts
+            renderBlogPosts();
 
-            if(blogListPage) blogListPage.classList.remove('hidden');
-            if(singlePostContainer) singlePostContainer.classList.add('hidden');
-            updateMeta(defaultTitle, defaultMetaDesc);
-            history.pushState(null, '', 'blog.html');
-            window.scrollTo(0, 0);
-        }
-
-        function showSinglePost(postId) {
-            const post = blogPosts[postId];
-            if (!post || !singlePostContainer || !blogListPage) return;
-
-            const mainContainer = document.getElementById('blog-main-container');
-            if (mainContainer) mainContainer.classList.remove('pt-24');
-
-            let contentWithImages = post.content;
-            if (post.images) {
-                for (const placeholder in post.images) {
-                    const imageData = post.images[placeholder];
-                    const markdownImg = `![${imageData.alt}](${imageData.data})`; 
-                    contentWithImages = contentWithImages.replace(new RegExp(placeholder.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), markdownImg);
+            document.addEventListener('click', (e) => {
+                const link = e.target.closest('.blog-post-link');
+                if (link) {
+                    e.preventDefault();
+                    const postId = link.dataset.postid;
+                    showSinglePost(postId);
                 }
-            }
-
-            const contentHtml = marked.parse(contentWithImages);
-
-            singlePostContainer.innerHTML = `
-                <div class="max-w-3xl mx-auto pt-16">
-                    <a href="#" id="back-to-blog" class="inline-flex items-center text-slate-600 hover:text-blue-600 mb-8">
-                        <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
-                        Back to Blog
-                    </a>
-                    <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">${post.category}</p>
-                    <h1 class="text-4xl font-extrabold text-slate-800 mt-2 mb-4">${post.title}</h1>
-                    <p class="text-gray-500 text-sm mb-8">${post.meta}</p>
-                    <img src="${post.image}" alt="${post.imageAlt}" class="w-full h-auto rounded-lg mb-8">
-                    <div class="prose-styles text-slate-700">
-                        ${contentHtml}
-                    </div>
-                </div>
-            `;
-            lucide.createIcons();
-            
-            blogListPage.classList.add('hidden');
-            singlePostContainer.classList.remove('hidden');
-            
-            updateMeta(`${post.title} | Yunni`, post.metaDescription);
-            history.pushState({ postId: postId }, '', `#${post.slug}`);
-
-            window.scrollTo(0, 0);
-
-            document.getElementById('back-to-blog').addEventListener('click', (e) => {
-                e.preventDefault();
-                showBlogList();
             });
-        }
 
-        // Initial render of blog posts
-        renderBlogPosts();
-
-        document.addEventListener('click', (e) => {
-            const link = e.target.closest('.blog-post-link');
-            if (link) {
-                e.preventDefault();
-                const postId = link.dataset.postid;
-                showSinglePost(postId);
+            // Helper function to find post by ID or slug
+            function findPostByIdOrSlug(idOrSlug) {
+                if (blogPosts[idOrSlug]) {
+                    return { id: idOrSlug, post: blogPosts[idOrSlug] };
+                }
+                const found = Object.entries(blogPosts).find(([id, post]) => post.slug === idOrSlug);
+                return found ? { id: found[0], post: found[1] } : null;
             }
-        });
 
-        // Helper function to find post by ID or slug
-        function findPostByIdOrSlug(idOrSlug) {
-            // First try to find by ID
-            if (blogPosts[idOrSlug]) {
-                return { id: idOrSlug, post: blogPosts[idOrSlug] };
-            }
-            
-            // If not found by ID, try to find by slug
-            const found = Object.entries(blogPosts).find(([id, post]) => post.slug === idOrSlug);
-            return found ? { id: found[0], post: found[1] } : null;
-        }
-
-        // Handle browser back/forward
-        window.addEventListener('popstate', () => {
-            if (window.location.hash) {
-                const idOrSlug = window.location.hash.substring(1);
-                const found = findPostByIdOrSlug(idOrSlug);
-                if (found) {
-                    showSinglePost(found.id);
+            // Handle browser back/forward
+            window.addEventListener('popstate', () => {
+                const hash = window.location.hash.substring(1);
+                if (hash) {
+                    const found = findPostByIdOrSlug(hash);
+                    if (found) {
+                        showSinglePost(found.id);
+                    } else {
+                        showBlogList();
+                    }
                 } else {
                     showBlogList();
                 }
-            } else {
-                showBlogList();
+            });
+
+            // Check for hash on initial load
+            const initialHash = window.location.hash.substring(1);
+            if (initialHash) {
+                const found = findPostByIdOrSlug(initialHash);
+                if (found) {
+                    showSinglePost(found.id);
+                }
             }
+
+            lucide.createIcons();
         });
-
-        // Check for hash on initial load
-        if (window.location.hash) {
-            const idOrSlug = window.location.hash.substring(1);
-            const found = findPostByIdOrSlug(idOrSlug);
-            if (found) {
-                showSinglePost(found.id);
-            }
-        }
-
-        lucide.createIcons();
-    });
-</script>
+    </script>
 </body>
 </html>
