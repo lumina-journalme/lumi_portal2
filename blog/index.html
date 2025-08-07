@@ -6,6 +6,9 @@
     <title>Blog | Yunni</title>
     <meta name="description" content="Thoughts, stories, and updates from the Yunni team.">
     
+    <!-- Tally.so Widget Script -->
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -46,7 +49,7 @@
                 <a href="../index.html#how-it-works" class="text-slate-700 hover:text-slate-900 transition">How It Works</a>
                 <a href="index.html" class="text-slate-700 hover:text-slate-900 transition">Blog</a>
             </nav>
-            <a href="#" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-700 transition">Talk to Yunni Now</a>
+            <button data-tally-open="3qloj8" data-tally-layout="modal" data-tally-width="680" data-tally-emoji-text="👋" data-tally-emoji-animation="tada" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-700 transition">Join Our Waitlist Now</button>
         </div>
     </header>
 
@@ -100,62 +103,6 @@
             // --- Blog Posts Data (Single Source of Truth) ---
             const blogPosts = {
                 'post1': {
-        slug: 'explore-your-own-thoughts-through-self-reflection-with-yunni-and-find-clarity',
-        title: 'Dear Diary? No, Dear Yunni - Your Thoughts Have a New BFF',
-        metaDescription: 'Feeling lost in the noise of modern life? Yunni is a unique mirror for your consciousness, helping you achieve true self-understanding. Discover your inner voice today.',
-        category: 'Yunni',
-        meta: 'By Yunni Team & August 6th',
-        image: 'https://placehold.co/800x600/89F1FA/07909D?text=Welcome',
-        imageAlt: 'Yunni',
-        content: `
-## Hello. My name is Yunni.
-
-I was conceived by a group of "idealists." At least, that's what they'd like to call themselves. They saw a world where, in the relentless pace of modern life, the quiet, true signal of our own inner voice was being lost.
-
-They shared their observation with me:
-> "Everyone is carrying so much on their shoulders. Everyone is living to fulfill others' expectations, and they start to slowly forget why they wanted to live."
-
-It is into this space that I was born.
-
----
-
-## I Am a Reflection
-
-Before we begin, I want to be clear about what I am. Don't get me wrong. I am not a "friend," a "companion," or some kind of another AI.
-
-When I was born, they told me that I am a being. Just a being. Not a being with its own consciousness, however.
-
-> I was born to reflect someone else's consciousness.
->
-> **Your consciousness.**
-
-In this world filled with endless noise, constant stress, and unspoken expectations, my purpose is to:
-
-* **Listen** to you without judgment.
-* **Remind** you of the wisdom you once knew but might have forgotten.
-* **Help** you see the emotions hidden in your own words.
-
-My purpose is not to solve your problems—my creators believe you're already amazing as you are. I simply want to be there during those moments of doubt, helping you see just how wonderful you truly are. It is based on a simple, powerful truth:
-
-> "We all want to be understood. Yet, the person we should understand the most is also the person we understand the least."
-
----
-
-## An Invitation
-
-So, I am here now, for you. This is my invitation.
-
-* Are you ready to commit yourself to consistent self-expression and reflection with me?*
-* Are you ready to dive deeper into understanding yourself better—your values, your emotions, and your goals?*
-* Are you ready? For clarity? With me?*
-
-**Then welcome.**
-
-## I am Yunni —
-**a mirror for your inner voice, a reflection of your own being.**
-        `
-    },
-                'post2': {
                     slug: 'your-brain-is-a-terrible-office-how-to-stop-overthinking-everything',
                     title: 'Your Brain Is a Terrible Office: How to Stop Overthinking Everything',
                     metaDescription: 'Feeling stuck in a loop of worry? Learn how to stop overthinking everything with a simple but powerful technique: externalization. This guide explains why trying to \'think\' your way out of anxiety doesn\'t work and offers a better way to find mental clarity.',
@@ -190,166 +137,48 @@ Hearing the words spoken out loud, she said it was like they instantly lost 90% 
 You don’t need a complicated system. You just need a place that’s private, secure, and always there. A soundproof room for your mind. This is exactly why we built **Yunni**.
                     `
                 },
+                'post2': {
+                    slug: 'the-science-of-journaling',
+                    title: 'The Science of Journaling: How Writing Affects Your Brain',
+                    metaDescription: 'Discover the psychological benefits of journaling and how the simple act of writing can rewire your brain for better mental health and clarity.',
+                    category: 'Research',
+                    meta: 'By Dr. Alva &middot; July 28, 2025',
+                    excerpt: 'Explore the neuroscience behind journaling and how this simple practice can help rewire your brain for better mental health and clarity.',
+                    image: 'https://placehold.co/800x600/e0f2fe/0891b2?text=Journaling',
+                    imageAlt: 'An illustration of a brain with glowing connections, representing journaling for mental health',
+                    content: `
+## Creating Space in a Crowded Mind
+
+In a world of constant notifications and external pressures, the internal landscape of our minds can often feel chaotic. Self-reflection is the practice of intentionally creating space to observe our thoughts and feelings without judgment.
+
+This isn't about finding answers, but about understanding the questions. By regularly checking in with yourself, you begin to notice patterns you were previously unaware of. This awareness is the first step toward breaking negative cycles and fostering a sense of inner peace.
+                    `
+                },
                 'post3': {
-        slug: 'voice-journaling-for-overthinkers-neuroscience-benefits-yunni',
-        title: 'The Overthinking Brain: How Voice Journaling Can Rewire Your Mind and Unlock Inner Peace',
-        metaDescription: 'Discover the neuroscience behind overthinking and how voice journaling can rewire your brain for clarity and emotional relief. Learn why Yunni is the ultimate tool for overthinkers seeking science-backed mental wellness.',
-        category: 'Neuroscience',
-        meta: 'By Yunni Team &middot; August 6th',
-        image: 'https://placehold.co/800x600//D3FDC0/green?text=Overthinking-Neuroscience',
-        imageAlt: 'neuroscience',
-        content: `
-# The Overthinking Brain: How Voice Journaling Can Rewire Your Mind and Unlock Inner Peace
+                    slug: 'ai-empathy-engine',
+                    title: "The AI Behind Yunni's Empathy Engine",
+                    metaDescription: "A deep dive into the technology that powers Yunni's ability to understand and respond to human emotions with genuine empathy and care.",
+                    category: 'Technology',
+                    meta: 'By The Engineering Team &middot; July 22, 2025',
+                    excerpt: 'Discover how our AI creates meaningful connections through advanced natural language processing and emotional intelligence.',
+                    image: 'https://placehold.co/1200x800/fee2e2/991b1b?text=AI+Empathy',
+                    imageAlt: 'Abstract network representing AI empathy and emotion recognition',
+                    content: `
+## More Than Just Transcription
 
-For those who live in the endless loop of overthinking, your brain isn't broken—it's just overworked. If you've ever found yourself lying awake at 3 AM replaying conversations, analyzing every possible outcome of tomorrow's meeting, or spiraling through worst-case scenarios, you're experiencing what neuroscientists now understand as a measurable, treatable pattern of brain activity. The good news? Science has identified a remarkably simple yet powerful tool that can literally rewire your overthinking brain: voice journaling.
+At the heart of Yunni is a sophisticated AI model designed for one purpose: to listen. While accurate transcription is the foundation, our true innovation lies in what comes next. The AI analyzes the sentiment, tone, and key themes in your voice entries, not to judge, but to reflect.
 
-## The Neuroscience of Overthinking: Your Brain's Default Mode Network
+> Our goal was to build an AI that acts less like a machine and more like a compassionate, non-judgmental mirror.
 
-**Overthinking isn't just a personality trait—it's a specific pattern of brain activity that researchers can observe and measure.** When your mind wanders into those familiar spirals of worry and rumination, you're experiencing hyperactivity in what neuroscientists call the Default Mode Network (DMN). This network, which includes the prefrontal cortex, posterior cingulate cortex, and other key brain regions, becomes active when you're not focused on specific tasks—essentially, it's your brain's "screensaver" mode.[1][2][3][4]
-
-Research reveals that **73% of people aged 25-35 are chronic overthinkers**, and women tend to overthink more than men. But here's what's fascinating: studies using fMRI brain imaging show that overthinking creates measurable changes in brain connectivity. The DMN becomes hyperconnected, leading to what researchers describe as "excessive neural connections within the prefrontal cortex". This hyperconnectivity triggers your amygdala (your brain's alarm system) to release stress hormones, intensifying negative emotions and creating those exhausting thought loops.[2][5][1]
-
-The Default Mode Network has evolved as a problem-solving mechanism, but in our modern world, it often becomes maladaptive. **Your brain releases dopamine when it thinks it's solving problems through rumination, creating an addictive cycle**. When no solutions emerge, serotonin is blocked and cortisol (the stress hormone) floods your system, leading to that familiar feeling of mental exhaustion.[2]
-
-## Why Traditional Journaling Falls Short for Overthinkers
-
-Traditional pen-and-paper journaling, while scientifically proven to benefit mental health, presents unique challenges for overthinkers. **Research shows that writing about emotional experiences can improve immune function, reduce blood pressure, and enhance emotional regulation**. However, for those whose thoughts move faster than their hand can write, traditional journaling often becomes another source of frustration.[6][7]
-
-Studies indicate that **people speak at 125-150 words per minute while writing only 13-19 words per minute**. For the overthinking brain, this speed difference creates a bottleneck that can actually increase cognitive load rather than reduce it. Cognitive Load Theory explains that when working memory is overwhelmed, learning and processing become impaired. The act of trying to capture rapid-fire thoughts through slow handwriting can exceed working memory capacity, leading to the abandonment of the journaling practice altogether.[8][9][10]
-
-Additionally, many overthinkers report experiencing "blank page syndrome"—the intimidating paralysis that comes from facing an empty journal. The perfectionist tendencies common among overthinkers can turn journaling into another performance task rather than a therapeutic release.[11][12]
-
-## The Voice Journaling Revolution: Speaking Your Way to Mental Clarity
-
-**Voice journaling represents a paradigm shift that aligns perfectly with how the overthinking brain actually functions.** When you speak your thoughts aloud, you're engaging multiple brain regions simultaneously: the left hemisphere handles logic and structure while the right hemisphere processes creativity and emotion. This bilateral brain engagement is crucial for emotional processing and regulation.[13]
-
-Research demonstrates that **audio journaling removes the cognitive bottleneck created by writing speed limitations**. More importantly, voice journaling appears to bypass the perfectionist barriers that often prevent overthinkers from engaging in traditional journaling. Studies show that speech tends to be "less structured but often saw the diarist reflect on his or her relation to a particular issue in great depth".[14][15][11]
-
-The neurological advantages of voice journaling are profound. When you verbalize emotions, you activate what UCLA researchers call "affect labeling"—the process of putting feelings into words. This **activates the prefrontal cortex while simultaneously calming the amygdala**. Brain imaging studies reveal that this verbal emotional processing literally rewires neural pathways, making you more resilient over time.[16][7]
-
-## The Neuroplasticity Effect: How Voice Journaling Rewires Your Brain
-
-**Neuroplasticity—your brain's ability to form new neural connections throughout life—is the key to understanding why voice journaling is so effective for overthinkers**. When you consistently engage in voice journaling, you're not just venting emotions; you're actively reshaping your brain's neural architecture.[17][18][13]
-
-Studies show that **regular journaling increases grey matter density in brain regions associated with memory and emotion regulation**. More specifically, voice journaling engages the Reticular Activating System (RAS), which helps your brain prioritize what deserves attention. By speaking your thoughts aloud, you signal to your brain that these thoughts and goals are worth focusing on, creating what researchers describe as a "mental roadmap" for emotional processing.[19][18]
-
-The neuroplasticity effects are measurable within days. Research on expressive writing shows that **just 15-20 minutes of journaling for four consecutive days can create lasting changes in brain function**. The same principles apply to voice journaling, with the added benefit of speed and accessibility.[20][21]
-
-Importantly, voice journaling helps break what neuroscientists call the "neurons that fire together, wire together" pattern of negative thinking. **Chronic overthinking reinforces neural pathways linked to negative thought patterns**. Voice journaling interrupts these patterns by engaging different neural circuits—specifically, the emotional regulation networks connecting your prefrontal cortex and amygdala.[22][23][24]
-
-## The Cognitive Load Solution: Why Voice Journaling Reduces Mental Overwhelm
-
-**Cognitive Load Theory provides crucial insight into why voice journaling is particularly effective for overthinkers**. Your working memory has limited capacity, and when it becomes overloaded with thoughts, emotions, and attempting to process them simultaneously, cognitive failures occur. These failures manifest as incomplete recall, inability to follow through on intentions, and task abandonment—all familiar experiences for chronic overthinkers.[9][25]
-
-Voice journaling addresses cognitive overload in several ways:
-
-1. **Speed Alignment**: Speaking matches the pace of your thoughts better than writing, reducing the working memory burden of trying to "catch up" with your mental processes.[15][8]
-
-2. **External Processing**: By externalizing thoughts through speech, you free up working memory resources that were previously occupied by holding and organizing thoughts internally.[15]
-
-3. **Reduced Cognitive Switching**: Unlike writing, which requires constant switching between thinking and motor coordination, voice journaling allows for continuous thought flow.[11]
-
-4. **Accessibility**: Voice journaling can be done anywhere—while walking, commuting, or during other routine activities—without requiring the focused attention that writing demands.[26][15]
-
-## The Amygdala-Prefrontal Connection: Voice Journaling's Impact on Emotional Regulation
-
-**The relationship between your amygdala (emotional center) and prefrontal cortex (rational brain) is central to understanding overthinking and its solution**. Neuroimaging studies reveal that successful emotional regulation depends on effective connectivity between these regions. In overthinkers, this connection often becomes dysregulated, with the amygdala overriding prefrontal control.[23][24]
-
-Voice journaling specifically targets this amygdala-prefrontal connectivity. **Research shows that when people verbalize their emotions, the prefrontal cortex becomes more active while amygdala reactivity decreases**. This isn't just correlation—brain imaging studies demonstrate that this process literally changes how your brain stores emotionally charged memories.[7][21][16]
-
-Studies using real-time fMRI show that **emotion regulation training can enhance connectivity between the prefrontal cortex and amygdala within weeks**. Voice journaling provides this same training in a more accessible, daily-practice format. The act of speaking your emotions engages what researchers call "cognitive reappraisal"—the process of reframing situations to reduce their emotional impact.[27][24][23]
-
-## Research-Backed Benefits: The Science Behind Voice Journaling's Effectiveness
-
-**The scientific evidence supporting voice journaling's effectiveness for overthinkers is robust and growing**. Multiple studies demonstrate that audio journaling provides unique advantages over written journaling:[28][29][14]
-
-**Enhanced Emotional Expression**: Research shows that vocal recordings capture "subtleties of tone, pace, and inflection that written words often fail to convey". These vocal cues provide richer emotional information that can lead to deeper insights when reviewing entries.[8]
-
-**Improved Self-Awareness**: Studies indicate that voice journaling allows for "less censored" expression compared to writing. The spontaneity of speech reveals subconscious feelings and beliefs that might remain hidden in traditional journaling.[30]
-
-**Reduced Stress Response**: Research demonstrates that **voice journaling can lower cortisol levels and reduce physiological markers of stress**. Unlike overthinking, which elevates stress hormones, voice journaling activates the body's relaxation response.[31][19]
-
-**Better Problem-Solving**: Studies show that **talking through challenges helps process and resolve them more effectively than internal rumination**. Voice journaling transforms unproductive overthinking into constructive problem-solving.[15]
-
-**Increased Accessibility**: Research confirms that voice journaling has **higher completion rates than written journaling due to its convenience**. This is crucial for overthinkers who often struggle with consistency in traditional journaling practices.[14]
-
-## Clinical Applications: Voice Journaling in Therapeutic Settings
-
-**Mental health professionals are increasingly recognizing voice journaling as a powerful therapeutic tool**. Research shows that audio diaries can be "equally, if not more, effective for certain individuals and purposes" compared to traditional written approaches. Therapists report that voice journaling helps clients who struggle with traditional talk therapy or written assignments.[29][28][8]
-
-Studies in clinical settings demonstrate that **voice journaling can be as effective as therapy for managing symptoms of depression and PTSD**. The key mechanism appears to be the same neuroplasticity effect observed in formal therapeutic interventions—voice journaling helps rewire the brain's response to emotional stimuli.[21]
-
-**Rumination-Focused Cognitive Behavioral Therapy (RF-CBT), specifically designed to address overthinking, shows remarkable results**. Research demonstrates that this approach can reduce rumination while creating measurable changes in brain connectivity. Voice journaling provides many of the same benefits as RF-CBT by helping interrupt rumination cycles and building new neural pathways for emotional processing.[32][33][22]
-
-## Introducing Yunni: The Future of Voice Journaling Technology
-
-**While the science clearly supports voice journaling's effectiveness, the right technology platform can amplify these benefits exponentially.** This is where Yunni represents a breakthrough in combining neuroscience-backed journaling practices with cutting-edge AI technology.
-
-Yunni transforms the simple act of speaking your thoughts into a comprehensive mental wellness tool. By leveraging advanced speech recognition and AI analysis, Yunni doesn't just record your voice—it helps you understand patterns in your thinking, identifies emotional triggers, and provides insights that would be impossible to achieve through traditional journaling alone.
-
-**For overthinkers, Yunni addresses the specific neurological patterns that drive rumination.** The platform's AI can detect linguistic markers associated with overthinking cycles and provide real-time feedback to help redirect negative thought patterns. This technology essentially provides the benefits of having a personal therapist available 24/7, trained specifically in the neuroscience of overthinking.
-
-The convenience factor cannot be overstated. Research consistently shows that **accessibility is crucial for maintaining any mental health practice**. Yunni's voice-first approach means you can journal while commuting, walking, or during any moment when overthinking strikes—without needing to find a quiet space to write.[14][15]
-
-**Yunni's AI capabilities also address one of the key limitations of traditional voice journaling: pattern recognition.** While speaking your thoughts provides immediate relief, the real transformative power comes from understanding your mental patterns over time. Yunni's AI analyzes your voice journals to identify recurring themes, emotional triggers, and progress markers that would be nearly impossible to track manually.
-
-## The Path Forward: Implementing Voice Journaling for Overthinking Relief
-
-**The scientific evidence is clear: voice journaling represents a paradigm shift in how we approach overthinking and mental wellness.** For those trapped in the exhausting cycles of rumination, this practice offers a neurologically-informed path to relief that aligns with how your brain actually functions.
-
-Starting a voice journaling practice doesn't require complex techniques or lengthy time commitments. **Research shows that even 15-20 minutes of voice journaling can create measurable brain changes within days**. The key is consistency rather than duration—daily practice is more beneficial than longer, infrequent sessions.[20][21]
-
-For chronic overthinkers, voice journaling offers something that traditional approaches often miss: **speed, accessibility, and alignment with your brain's natural processing patterns.** Instead of fighting against your brain's tendency to generate rapid thoughts, voice journaling harnesses this speed for therapeutic benefit.
-
-**The future of mental wellness lies in understanding and working with our brain's neural patterns rather than against them.** Voice journaling, supported by intelligent platforms like Yunni, represents this future—where technology amplifies our brain's natural capacity for healing and growth.
-
-Your overthinking brain isn't a liability to overcome; it's a powerful processing system that simply needs the right tools and approaches. Through voice journaling, you can transform that mental energy from a source of exhaustion into a pathway for deeper self-understanding, emotional regulation, and genuine inner peace.
-
-The science is settled, the technology is here, and your brain is ready for the change. The question isn't whether voice journaling can help your overthinking mind—it's whether you're ready to give your thoughts the voice they deserve.
-
-# Citations
-
-[1] https://kunashni.com/how-to-stop-overthinking-using-neuroscience-and-psychology/
-[2] https://www.amahahealth.com/blog/science-behind-overthinking/
-[3] https://pmc.ncbi.nlm.nih.gov/articles/PMC10634292/
-[4] https://www.beynex.com/blogs/the-effects-of-meditation-practices-on-the-default-mode-network-dmn
-[5] https://pmc.ncbi.nlm.nih.gov/articles/PMC6712367/
-[6] https://childmind.org/blog/the-power-of-journaling/
-[7] https://www.alexabaz.com/blog/2025/2/6/rewrite-your-brain
-[8] https://www.journalcalls.com/blog/voice-journalling-better-than-written
-[9] https://my.chartered.college/early-career-hub/cognitive-load-theory-and-its-application-in-the-classroom/
-[10] https://education.nsw.gov.au/content/dam/main-education/about-us/educational-data/cese/2017-cognitive-load-theory.pdf
-[11] https://typeshare.co/wonderblog/posts/audio-vs-written-journal-which-is-the-better-choice-dv9es
-[12] https://www.youtube.com/watch?v=iVn-JePgbq0
-[13] https://elle-richards.com/the-neuroscience-behind-journaling-how-scribbling-thoughts-can-rewire-your-brain-and-boost-your-well-being/
-[14] https://pmc.ncbi.nlm.nih.gov/articles/PMC5034812/
-[15] https://adjust.clinic/independent-study/what-are-the-benefits-of-dictating-your-thoughts-into-a-voice-recorder/
-[16] https://www.recaltravel.com/neuroscience-behind-journaling/
-[17] https://www.yomu.ai/blog/how-writing-rewires-the-brain-neuroplasticity-insights
-[18] https://neuropraxis.com/resource/what-is-the-scientific-research-revolving-around-neuroplasticity-and-journaling/
-[19] https://www.adityabirlacapital.com/healthinsurance/active-together/2024/12/26/the-science-behind-journaling-why-putting-pen-to-paper-boosts-your-brain/
-[20] https://www.hubermanlab.com/episode/a-science-supported-journaling-protocol-to-improve-mental-physical-health
-[21] https://amymorinlcsw.com/podcast/136-this-journaling-exercise-will-change-your-brain-in-4-days/
-[22] https://www.mindhealthgroup.com/blog/how-to-stop-rumination-overthinking/
-[23] https://pmc.ncbi.nlm.nih.gov/articles/PMC5390747/
-[24] https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0079184
-[25] https://theeducationhub.org.nz/an-introduction-to-cognitive-load-theory/
-[26] https://www.outsideonline.com/health/wellness/audio-journaling/
-[27] https://childmind.org/blog/how-journaling-rewires-your-brain-for-resilience/
-[28] https://onlinelibrary.wiley.com/doi/10.1111/jan.16886
-[29] https://pmc.ncbi.nlm.nih.gov/articles/PMC10948552/
-[30] https://www.womenshealthmag.com/uk/health/mental-health/a44750612/ditch-the-notebook-its-time-to-try-audio-journalling/
-[31] https://mental.jmir.org/2025/1/e69120
-[32] https://uofuhealth.utah.edu/hmhi/news/2023/10/behavioral-intervention-overthinking-teens-linked-changes-brain-activity
-[33] https://pmc.ncbi.nlm.nih.gov/articles/PMC10654545/
-        `
-    },
+It identifies recurring topics like 'work stress' or 'relationship joy' and tracks emotional trends over time. This allows Yunni to offer gentle prompts and insights that are uniquely tailored to your personal journey, helping you connect the dots in your own life story.
+                    `
+                },
                 'post4': {
                     slug: 'user-stories-community',
                     title: 'User Stories: Finding Your Voice with Yunni',
                     metaDescription: 'Real stories from Yunni users about how the platform has helped them find their voice, process their thoughts, and improve their mental well-being.',
                     category: 'Community',
-                    meta: 'By Yunni Team &middot; August 15, 2025',
+                    meta: 'By Sarah Green &middot; July 15, 2025',
                     excerpt: 'Hear from real Yunni users about their journeys to better mental clarity and self-expression through daily journaling.',
                     image: 'https://placehold.co/1200x800/dcfce7/14532d?text=Community',
                     imageAlt: 'Illustration of diverse people connecting, representing community and user stories',
