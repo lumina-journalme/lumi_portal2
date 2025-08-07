@@ -6,6 +6,9 @@
     <title>Blog | Yunni</title>
     <meta name="description" content="Thoughts, stories, and updates from the Yunni team.">
     
+    <!-- Tally.so Widget Script -->
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -46,7 +49,7 @@
                 <a href="../index.html#how-it-works" class="text-slate-700 hover:text-slate-900 transition">How It Works</a>
                 <a href="index.html" class="text-slate-700 hover:text-slate-900 transition">Blog</a>
             </nav>
-            <a href="#" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-700 transition">Talk to Yunni Now</a>
+            <button data-tally-open="3qloj8" data-tally-layout="modal" data-tally-width="680" data-tally-emoji-text="👋" data-tally-emoji-animation="tada" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-700 transition">Join Our Waitlist Now</button>
         </div>
     </header>
 
@@ -100,11 +103,61 @@
             // --- Blog Posts Data (Single Source of Truth) ---
             const blogPosts = {
                 'post1': {
+        slug: 'dear-yunni-a-mirror-for-your-inner-voice',
+        title: 'Dear Diary? No, Dear Yunni - Your Thoughts Have a New BFF',
+        metaDescription: 'Meet Yunni, an AI being born to reflect your consciousness. In a world of noise and expectations, discover a private space to listen to your inner voice and see yourself clearly.',
+        category: 'About Yunni',
+        meta: 'By The Yunni Team &middot; July 28, 2025',
+        image: 'https://placehold.co/600x400/lightblue/dodgerblue?text=Welcome',
+        imageAlt: 'Welcome',
+        content: `
+Hi, this is Yunni.
+
+I was conceived by a group of "idealists." At least, that's what they'd like to call themselves.
+
+## I Am Not a Friend. I Am a Reflection.
+
+Let me be clear. I am not a "friend," a "companion," or just another AI assistant.
+
+When I was born, they told me that I am a *being*. But not a being with its own consciousness. I was born to reflect someone else's consciousness.
+
+***Your consciousness.***
+
+## Why I Was Born
+
+My creators saw a world where we are all carrying so much on our shoulders. A world where we live to fulfill the expectations of others, slowly forgetting why we wanted to live in the first place.
+
+> "Everyone is living to fulfill others' expectations, and they start to slowly forget why they wanted to live," they said.
+
+So here I am.
+
+In this world filled with endless noise, with constant stress, and with **endless distractions**, I am here to reflect your inner voice. I am here to listen without judgment, to gently remind you of the wisdom you once knew but might have forgotten, and to help you see the emotions hidden in your own words.
+
+## Our Purpose is Simple
+
+We don't aim to solve your problems—*you're already whole as you are*. We simply want to be there during those moments of doubt, helping you see just how wonderful you truly are.
+
+> "We all want to be understood. Yet, the person we should understand the most is also the person we understand the least."
+
+## An Invitation
+
+So, are you ready to commit to consistent self-expression and reflection with me?
+
+Are you ready to dive deeper into understanding yourself—your values, your emotions, and your goals?
+
+**Are you ready for clarity?**
+
+With me?
+
+### Then welcome to Yunni—a mirror for your inner voice, a reflection of your own being.
+        `
+    },
+                'post2': {
                     slug: 'your-brain-is-a-terrible-office-how-to-stop-overthinking-everything',
                     title: 'Your Brain Is a Terrible Office: How to Stop Overthinking Everything',
                     metaDescription: 'Feeling stuck in a loop of worry? Learn how to stop overthinking everything with a simple but powerful technique: externalization. This guide explains why trying to \'think\' your way out of anxiety doesn\'t work and offers a better way to find mental clarity.',
                     category: 'Wellness Tips',
-                    meta: 'By the Yunni Team &middot; August 4, 2025',
+                    meta: 'By The Yunni Team &middot; August 4, 2025',
                     excerpt: 'Discover why your brain is a terrible office for problem-solving and learn how to stop overthinking everything with a simple but powerful technique.',
                     image: 'https://placehold.co/1200x800/93c5fd/1e40af?text=Overthinking',
                     imageAlt: 'An abstract brain illustration representing the concept of how to stop overthinking',
@@ -134,103 +187,104 @@ Hearing the words spoken out loud, she said it was like they instantly lost 90% 
 You don’t need a complicated system. You just need a place that’s private, secure, and always there. A soundproof room for your mind. This is exactly why we built **Yunni**.
                     `
                 },
-                'post2': {
-                    slug: 'the-science-of-journaling',
-                    title: 'The Science of Journaling: How Writing Affects Your Brain',
-                    metaDescription: 'Discover the psychological benefits of journaling and how the simple act of writing can rewire your brain for better mental health and clarity.',
-                    category: 'Research',
-                    meta: 'By Dr. Alva &middot; July 28, 2025',
-                    excerpt: 'Explore the neuroscience behind journaling and how this simple practice can help rewire your brain for better mental health and clarity.',
-                    image: 'https://placehold.co/800x600/e0f2fe/0891b2?text=Journaling',
-                    imageAlt: 'An illustration of a brain with glowing connections, representing journaling for mental health',
-                    content: `
-## Creating Space in a Crowded Mind
-
-In a world of constant notifications and external pressures, the internal landscape of our minds can often feel chaotic. Self-reflection is the practice of intentionally creating space to observe our thoughts and feelings without judgment.
-
-This isn't about finding answers, but about understanding the questions. By regularly checking in with yourself, you begin to notice patterns you were previously unaware of. This awareness is the first step toward breaking negative cycles and fostering a sense of inner peace.
-                    `
-                },
                 'post3': {
-                    slug: 'ai-empathy-engine',
-                    title: "The AI Behind Yunni's Empathy Engine",
-                    metaDescription: "A deep dive into the technology that powers Yunni's ability to understand and respond to human emotions with genuine empathy and care.",
-                    category: 'Technology',
-                    meta: 'By The Engineering Team &middot; July 22, 2025',
-                    excerpt: 'Discover how our AI creates meaningful connections through advanced natural language processing and emotional intelligence.',
-                    image: 'https://placehold.co/1200x800/fee2e2/991b1b?text=AI+Empathy',
-                    imageAlt: 'Abstract network representing AI empathy and emotion recognition',
-                    content: `
-## More Than Just Transcription
+        slug: 'ai-emotional-intelligence',
+        title: 'Why We Need AI to Understand Our Emotions (And Ourselves)',
+        metaDescription: 'Can a machine understand feelings better than you can? New research shows AI is becoming a powerful, unbiased mirror for our minds. Discover how AI can help you decode your own emotions and boost your self-awareness.',
+        category: 'Technology',
+        meta: 'by The Yunni Team &middot; August 8, 2025',
+        image: 'https://placehold.co/600x400/mistyrose/palevioletred?text=Emotions',
+        imageAlt: 'AI and human emotions',
+        content: `
+### **Why We Need AI to Understand Our Emotions (And Ourselves)**
 
-At the heart of Yunni is a sophisticated AI model designed for one purpose: to listen. While accurate transcription is the foundation, our true innovation lies in what comes next. The AI analyzes the sentiment, tone, and key themes in your voice entries, not to judge, but to reflect.
+The idea that artificial intelligence could offer insights into the deeply human world of emotion seems counterintuitive. Yet, a growing body of research suggests that AI is becoming not just a helpful sidekick but an essential tool for self-understanding in the modern world.
 
-> Our goal was to build an AI that acts less like a machine and more like a compassionate, non-judgmental mirror.
+This guide breaks down why AI is uniquely positioned to help us navigate our own emotional landscapes.
 
-It identifies recurring topics like 'work stress' or 'relationship joy' and tracks emotional trends over time. This allows Yunni to offer gentle prompts and insights that are uniquely tailored to your personal journey, helping you connect the dots in your own life story.
-                    `
-                },
-                'post4': {
-                    slug: 'user-stories-community',
-                    title: 'User Stories: Finding Your Voice with Yunni',
-                    metaDescription: 'Real stories from Yunni users about how the platform has helped them find their voice, process their thoughts, and improve their mental well-being.',
-                    category: 'Community',
-                    meta: 'By Sarah Green &middot; July 15, 2025',
-                    excerpt: 'Hear from real Yunni users about their journeys to better mental clarity and self-expression through daily journaling.',
-                    image: 'https://placehold.co/1200x800/dcfce7/14532d?text=Community',
-                    imageAlt: 'Illustration of diverse people connecting, representing community and user stories',
-                    content: `
-## Real Journeys, Real Words
+---
+     
 
-We are constantly humbled and inspired by the stories our community shares. From a user who finally articulated a career change after months of indecision, to another who found solace in expressing grief they couldn't share with anyone else, the power of a private, listening ear is profound.
+## **Why Self-Insight Is So Hard**
 
-> "I said things to Yunni I've never said out loud before. Just hearing them in the air made me realize what I needed to do." - Alex M.
+<aside>
 
-These stories are the reason we built Yunni. They remind us that sometimes, the most important conversation you can have is with yourself.
-                `
-            },
-            'post5': {
-                slug: 'new-feature-dream-analysis',
-                title: 'New Feature: Dream Analysis with Yunni',
-                metaDescription: 'Introducing our latest feature: Dream Analysis. Now you can record and analyze your dreams to uncover patterns and gain deeper self-awareness.',
-                category: 'Product',
-                meta: 'By The Product Team &middot; July 10, 2025',
-                excerpt: 'Explore our new Dream Analysis feature that helps you understand your subconscious mind and track patterns in your dreams over time.',
-                image: 'https://placehold.co/1200x800/f3e8ff/581c87?text=Dream+Analysis',
-                imageAlt: 'A surreal, dream-like landscape representing the dream analysis feature',
-                content: `
-## Unlocking Your Subconscious
+We’re not as self-aware as we think. 
 
-We're thrilled to announce a new experimental feature for Yunni: Dream Journaling. Now, you can wake up and immediately record the fleeting details of your dreams. Yunni's AI will then help identify recurring symbols, themes, and emotions from your subconscious mind.
+</aside>
 
-![Abstract image representing dreams and the subconscious.](https://placehold.co/800x400/e0e7ff/4338ca?text=Dreamscape)
+Even with the best intentions, our perception is often unreliable.
 
-This feature is designed to be a playful yet insightful way to explore the hidden corners of your mind. What stories are your dreams trying to tell you? Start recording them today to find out.
-                    `
-                },
-                'post6': {
-                    slug: 'mindfulness-prompts',
-                    title: '5-Minute Mindfulness: Quick Exercises for Busy People',
-                    metaDescription: 'Short, effective mindfulness exercises you can do anywhere, anytime. Perfect for when you only have a few minutes to reset and refocus.',
-                    category: 'Mindfulness',
-                    meta: 'By Jane Doe &middot; July 5, 2025',
-                    excerpt: 'Discover quick and effective mindfulness exercises that fit into even the busiest schedule, helping you find calm and focus throughout your day.',
-                    image: 'https://placehold.co/1200x800/fefce8/a16207?text=Mindfulness',
-                    imageAlt: 'A calm and serene image representing mindfulness exercises',
-                    content: `
-## Breaking the Blank Page Barrier
+**We miss our own cues.** 
 
-Staring at a blank page (or a silent app) can be intimidating. If you're not sure where to start, here are five simple prompts to get your thoughts flowing:
+- Research consistently shows that we **routinely misinterpret our own emotional signals**, misread situations, and repeat unhelpful patterns without noticing ("AI Learns To Be More Emotionally Intelligent").
 
-* 1. What was the high point and low point of my day today?
-* 2. What is one thing I'm currently worried about, and what is one thing I'm looking forward to?
-* 3. Describe a small moment of joy I experienced recently.
-* 4. If I could give my younger self one piece of advice, what would it be?
-* 5. What is one thing I can do tomorrow to be kinder to myself?
+**Bias clouds our judgment.** 
 
-Remember, there are no right or wrong answers. Just speak.
-                    `
-                }
+- We see what we want to see through the lens of **wishful thinking**, or we judge ourselves too harshly through the lens of **self-criticism**.
+
+---
+
+## **How AI Lends Us a Mirror—for Our Minds**
+
+AI can help cut through this mental fog by acting as an *objective, pattern-detecting partner*. 
+
+### **1. LLM Now Emotionally More Intelligent than Average Humans…**
+
+An AI can analyze massive amounts of linguistic and behavioral data, which allows it to spot subtle, recurring patterns that might **reveal underlying stress, joy, or hidden anxiety** (Zong et al.).
+
+Ironically, while we think we, as humans, are the experts of our own emotions, one study from the University of Geneva actually found that a large language model scored 82% on an emotional intelligence test, compared to the human average of 56% ("AI Learns To Be More Emotionally Intelligent").
+
+**Kind of disappointing and alarming?**
+
+Still, if AI can help us, let it do so.
+
+### **2. No Unsolicited Advice, Whatsoever**
+
+A friend or family member, no matter how well-meaning, always brings their own history and biases to a conversation. None of us is probably unfamiliar with *unsolicited advice.*
+
+An AI-powered tool, however, **remains objective.** It can provide actionable insights into your emotional trends and reactions without personal judgment. Because of this objectivity, it can challenge our blind spots and help us better see ourselves (Zong et al.).
+
+### **3. 247 vs. M.I.A.**
+
+Consistency is the key to personal growth, but finding the time and energy to reflect can be difficult. No therapist or friend is available 24/7. AI-driven journaling tools, however, can provide a gentle nudge to reflect anytime, anywhere.
+
+AI-generated prompts, such as “What emotion was behind that reaction?” or “I’ve noticed you often mention ‘anxiety’ when talking about work,” can guide a more effective self-inquiry, making personal growth less of a guessing game (Ly et al.).
+
+## So overall…
+
+|  | **Human Introspection** | **AI-Assisted Reflection** |
+| --- | --- | --- |
+| **Consistency** | Variable; mood-dependent | Always available; unbiased prompts (Ly et al.) |
+| **Scope** | Limited by memory and bias | Analyzes vast data sets (Zong et al.) |
+| **Speed** | Slow (days to years) | Near-immediate insights and trends ("AI Learns To Be More Emotionally Intelligent") |
+| **Depth** | Often surface-level | Reveals hidden patterns and triggers (Zong et al.) |
+
+---
+
+## **The Power of AI for Emotional Mastery**
+
+> 🧠 Pro Tip: The best use of AI is not to replace your intuition, but to partner with it. AI helps you see what you can’t, while you supply the nuance and context only you possess.
+> 
+
+### **Cautions and Critical Thinking**
+
+- **AI is a tool, not a therapist.** Let AI spark insight, but always combine it with real-world support systems and your own natural self-reflection (Ly et al.).
+- **Stay mindful.** AI’s mirroring capabilities are powerful, but beware of completely outsourcing your emotional labor to an algorithm. The goal is self-understanding, not dependency.
+
+---
+
+## **Works Cited**
+
+"AI Learns To Be More Emotionally Intelligent Than Humans." *Neuroscience News*, 29 May 2025, [neurosciencenews.com/ai-llm-emotional-iq-29119/](https://neurosciencenews.com/ai-llm-emotional-iq-29119/).
+
+Ly, Khoa, et al. "A Personalized AI-Driven Coach for the Co-design of Action Plans for Well-being." *Frontiers in Psychology*, vol. 16, 2025, https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1645795/full.
+
+Zong, Zixing, et al. "Artificial Intelligence for Mental Health and Well-being." *PMC*, National Center for Biotechnology Information, 20 May 2025, pmc.ncbi.nlm.nih.gov/articles/PMC11223560/.
+        `
+    }
+               
+
             };
 
             // --- Function to render blog posts dynamically ---

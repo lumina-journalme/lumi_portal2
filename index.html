@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yunni - The Journal That Listens</title>
     
-    <!-- Tailwind CSS -->
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
@@ -141,7 +140,6 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md border-b border-white/20">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="text-xl font-bold tracking-wider text-slate-800">Yunni</a>
@@ -150,13 +148,11 @@
                 <a href="#how-it-works" class="text-slate-700 hover:text-slate-900 transition">How It Works</a>
                 <a href="blog/index.html" class="text-slate-700 hover:text-slate-900 transition">Blog</a>
             </nav>
-            <a href="#" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-700 transition">Talk to Yunni Now</a>
+            <button data-tally-open="3qloj8" data-tally-layout="modal" data-tally-width="680" data-tally-emoji-text="👋" data-tally-emoji-animation="tada" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-slate-700 transition">Join Our Waitlist Now</button>
         </div>
     </header>
 
-    <!-- Main Content Wrapper -->
     <main>
-        <!-- Hero Section -->
         <section id="hero" class="h-screen w-full px-4 overflow-hidden hero-gradient">
             <canvas id="stardust-canvas"></canvas>
             <div class="absolute inset-0 grid place-items-center pointer-events-none z-10">
@@ -189,11 +185,9 @@
             </div>
         </section>
         
-        <!-- Sliding Journals Section -->
         <section id="use-cases" class="min-h-screen flex items-center py-16 bg-[#FAF7F2] overflow-hidden">
             <div id="journal-scroll-container" class="scroll-container flex flex-col gap-4">
-                <!-- JS will populate this -->
-            </div>
+                </div>
         </section>
 
         <section id="how-it-works" class="py-24 bg-white section-gradient-top">
@@ -244,8 +238,18 @@
                 </div>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                      <article>
+                        <a href="blog/index.html#dear-yunni-a-mirror-for-your-inner-voice" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/600x400/89F1FA/07909D?text=Welcome" alt="Welcome" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                            <div>
+                                <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">About Yunni</p>
+                                <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-blue-800 transition-colors">Dear Diary? No, Dear Yunni - Your Thoughts Have a New BFF</h3>
+                                <p class="text-slate-600 text-sm">By Yunni Team &middot; August 6th</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article>
                         <a href="blog/index.html#your-brain-is-a-terrible-office-how-to-stop-overthinking-everything" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/93c5fd/1e40af?text=Overthinking" alt="An abstract brain illustration representing the concept of how to stop overthinking" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/1200x800/93c5fd/1e40af?text=Overthinking" alt="An abstract brain illustration representing the concept of how to stop overthinking" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
                             <div>
                                 <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Wellness Tips</p>
                                 <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-blue-800 transition-colors">Your Brain Is a Terrible Office: How to Stop Overthinking Everything</h3>
@@ -254,28 +258,18 @@
                         </a>
                     </article>
                     <article>
-                        <a href="blog/index.html#the-science-of-journaling" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/800x600/e0f2fe/0891b2?text=Journaling" alt="An illustration of a brain with glowing connections, representing journaling for mental health" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
-                            <div>
-                                <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Research</p>
-                                <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-sky-800 transition-colors">The Science of Journaling: How Writing Affects Your Brain</h3>
-                                <p class="text-slate-600 text-sm">By Dr. Alva &middot; July 28, 2025</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article>
-                        <a href="blog/index.html#ai-empathy-engine" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/1200x800/fee2e2/991b1b?text=AI+Empathy" alt="Abstract network representing AI empathy and emotion recognition" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+                        <a href="blog/index.html#ai-emotional-intelligence" class="block group bg-white border border-slate-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <div class="overflow-hidden rounded-lg mb-4"><img src="https://placehold.co/600x400/mistyrose/palevioletred?text=Emotions" alt="AI and human emotions" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out"></div>
                             <div>
                                 <p class="text-sm font-semibold" style="color: rgba(58, 162, 215, 1);">Technology</p>
-                                <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-red-800 transition-colors">The AI Behind Yunni's Empathy Engine</h3>
-                                <p class="text-slate-600 text-sm">By The Engineering Team &middot; July 22, 2025</p>
+                                <h3 class="text-lg font-bold mb-2 text-slate-800 group-hover:text-red-800 transition-colors">Why We Need AI to Understand Our Emotions (And Ourselves)</h3>
+                                <p class="text-slate-600 text-sm">by The Yunni Team &middot; August 8, 2025</p>
                             </div>
                         </a>
                     </article>
                 </div>
                  <div class="text-center mt-12">
-                    <a href="blog/index.html" class="cta-button inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg text-base shadow-lg hover:bg-blue-500">View All Posts</a>
+                    <a href="blog/index.html" class="cta-button inline-block bg-slate-800 text-white font-semibold px-6 py-3 rounded-lg text-base shadow-lg hover:bg-slate-700">View All Posts</a>
                 </div>
             </div>
         </section>
@@ -285,7 +279,7 @@
                 <div class="bg-white/50 border border-white/60 backdrop-blur-md rounded-2xl p-12 text-center shadow-xl">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-800">Ready to Understand Yourself Better?</h2>
                     <p class="max-w-xl mx-auto text-slate-700 mb-8">Your journey of self-discovery is just a word away. Try Yunni today and hear what your thoughts are telling you.</p>
-                    <a href="#" class="cta-button inline-block bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg text-lg shadow-lg hover:bg-blue-500">Talk to Yunni Now</a>
+                    <button data-tally-open="3qloj8" data-tally-layout="modal" data-tally-width="680" data-tally-emoji-text="👋" data-tally-emoji-animation="tada" class="cta-button inline-block bg-slate-800 text-white font-semibold px-6 py-3 rounded-lg text-base shadow-lg hover:bg-slate-700">Join the Waitlist</button>
                 </div>
             </div>
         </section>
